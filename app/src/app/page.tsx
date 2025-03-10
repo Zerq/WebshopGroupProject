@@ -24,7 +24,7 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {...state.map((n, i) => <tr key={i}>
+            {...state.users.map((n, i) => <tr key={i}>
               <td>{n.firstName}</td>
               <td>{n.middleName ?? ""}</td>
               <td>{n.lastName}</td>

@@ -1,9 +1,10 @@
-import { User, NoOperation, UserAdded } from "./events";
+import { ComplexModel } from "../model";
+import { NoOperation, UserAdded } from "./events";
 import { CommandLike, EventLike } from "./interfaces";
 
 //command related to list of User
 
-export class AddUser implements CommandLike<User[]> {
+export class AddUser implements CommandLike<ComplexModel> {
     public constructor(
         public firstName: string,
         public lastName: string,
@@ -11,9 +12,9 @@ export class AddUser implements CommandLike<User[]> {
         public middleName?: string
     ) { }
 
-    execute(state: User[]): Array<EventLike<unknown>> {
+    execute(state: ComplexModel): Array<EventLike<unknown>> {
         //if user with the same email already exists then send a NoOperation event this could be handled diffrently only chooseing this way to show branching event outcomes 
-        if (state.find(n => n.email === this.email)) {
+        if (state.users.find(n => n.email === this.email)) {
             return [new NoOperation("email is already registered to user")];
         }
 

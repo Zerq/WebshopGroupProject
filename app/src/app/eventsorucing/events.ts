@@ -1,12 +1,7 @@
+import { User } from "../model";
 import { EventLike } from "./interfaces";
 
 // user data the example model would be an array of these...
-export interface User {
-    firstName: string;
-    middleName?: string;
-    lastName: string;
-    email: string;
-}
 
 
 export class UserAdded implements EventLike<User> {
