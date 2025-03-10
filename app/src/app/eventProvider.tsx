@@ -15,7 +15,7 @@ function eventReducer(state: ComplexModel, event: EventLike<unknown>) {
             return { users: [...state.users, newUser]  } as ComplexModel;
 
         case NoOperation.name:
-            alert((event as NoOperation).payLoad);
+            console.log((event as NoOperation).payLoad);
             return state;
 
         default:
@@ -36,13 +36,21 @@ function addEventToStore(event: EventLike<unknown>) {
     localStorage.setItem("events", JSON.stringify(events));
 }
 
-export default function EventProvider({ children }: { children: React.ReactNode; }) {
-    const [state, dispatcer] = useReducer(eventReducer,{ users:[]} as ComplexModel);
-    
-   // const saved = localStorage.getItem("events");
-   // const savedEvents:EventLike<unknown>[] =  saved? JSON.parse(saved) : [];
+ 
 
-    // const [events, setEvents] = useState(savedEvents);
+export default function EventProvider({ children }: { children: React.ReactNode; }) {
+    let initialModel = { users:[]} as ComplexModel;
+    
+    const saved = localStorage.getItem("events");
+    const savedEvents:EventLike<unknown>[] =  saved? JSON.parse(saved) : [];
+
+    savedEvents.forEach(evt=> {     
+        initialModel = eventReducer(initialModel, evt);
+    }); 
+
+
+
+    const [state, dispatcer] = useReducer(eventReducer,initialModel);
 
     const execute = (command: CommandLike<ComplexModel>) => {
         //execute the command using the current state
