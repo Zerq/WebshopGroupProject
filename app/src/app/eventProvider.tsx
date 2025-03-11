@@ -66,5 +66,3 @@ export default function EventProvider({ children }: { children: React.ReactNode;
         {children}
     </EventContext.Provider>;
 }
-
-// public class Replay()
