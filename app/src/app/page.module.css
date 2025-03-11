@@ -34,6 +34,22 @@
   grid-row-start: 2;
 }
 
+.main table {
+  border:0;
+  border-collapse: collapse;
+}
+.main table  td{
+  padding-block: 0.25rem;
+  padding-inline: 0.5rem;
+  
+  text-align: center;
+}
+.main table thead td {
+  background-color: royalblue;
+  color:white;
+}
+
+
 .main ol {
   font-family: var(--font-geist-mono);
   padding-left: 0;

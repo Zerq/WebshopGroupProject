@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AddUser } from "../eventsorucing/commands";
 import { EventContext } from "../eventProvider";
+import style from "./UserRegister.module.css";
 
 export default function UserRegister() {
     const eventCtx = useContext(EventContext);
@@ -20,11 +21,11 @@ export default function UserRegister() {
         }
     };
 
-    return <form action={formAction}>
-        <label htmlFor="FirstName">FirstName:</label>   <input id="FirstName" name="FirstName" /><br />
-        <label htmlFor="MiddleName">MiddleName:</label> <input id="MiddleName" name="MiddleName" /><br />
-        <label htmlFor="LastName">LastName:</label>     <input id="LastName" name="LastName" /><br />
-        <label htmlFor="Email">Email:</label>           <input type="email" id="Email" name="Email" /><br />
-        <input type="submit" value="Register" />
+    return <form className={style.FormStyle} action={formAction}>
+        <label htmlFor="FirstName">FirstName:</label>   <input id="FirstName" name="FirstName" />
+        <label htmlFor="MiddleName">MiddleName:</label> <input id="MiddleName" name="MiddleName" />
+        <label htmlFor="LastName">LastName:</label>     <input id="LastName" name="LastName" />
+        <label htmlFor="Email">Email:</label>           <input type="email" id="Email" name="Email" />
+        <div></div><input type="submit" value="Register" />
     </form>;
 }
