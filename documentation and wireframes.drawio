@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.16 Chrome/132.0.6834.196 Electron/34.2.0 Safari/537.36" version="26.0.16">
   <diagram name="Page-1" id="tB2G2_xuUE1PFD17AhQb">
-    <mxGraphModel dx="2578" dy="2132" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1778" dy="1798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -312,6 +312,18 @@
         </mxCell>
         <mxCell id="-5q9eOfwCiGem6xnQVSK-170" value="2" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-5q9eOfwCiGem6xnQVSK-165">
           <mxGeometry x="275" y="15" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-5q9eOfwCiGem6xnQVSK-171" value="" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="-450" y="760" width="360" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="-5q9eOfwCiGem6xnQVSK-172" value="Nyhets brev" style="rounded=0;whiteSpace=wrap;html=1;glass=0;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="-450" y="760" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-5q9eOfwCiGem6xnQVSK-173" value="användare vill kunna registrera en mail för att få nyhets brev" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-450" y="820" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-5q9eOfwCiGem6xnQVSK-174" value="användaren vill kunna avregistrea det horribla&amp;nbsp;&lt;div&gt;irriterande nyhets brevet&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-425" y="850" width="270" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
