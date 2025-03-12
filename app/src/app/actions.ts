@@ -5,3 +5,4 @@ export const fetchProducts = async () => {
     const data = await res.json() as Product[];
     return data;
 }
+
