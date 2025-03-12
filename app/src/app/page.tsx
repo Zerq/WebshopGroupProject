@@ -3,7 +3,8 @@ import { fetchProducts } from "./actions";
 import { ProductList } from "./components/product-cards/products";
 
 export default async function Home() {
-  const {products} =  await fetchProducts()
+  const {products} =  await fetchProducts();
+  
   return (
     <div>
       <main>
