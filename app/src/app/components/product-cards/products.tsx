@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./cards.module.css";
-import { Product } from "../../../../interfaces";
+import { Product } from "../../types";
 
 export function ProductList({ products }: { products: Product[] }) {
     return (
