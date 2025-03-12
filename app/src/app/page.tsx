@@ -2,6 +2,13 @@ import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function Home() {
+
+  /* general snippet to get the provider
+  const generalContext = useContext(GeneralContext);
+  if (!generalContext) throw new Error('blargContext måste användas inom en GeneralProvider');
+  const { state, getProduct } = generalContext;
+  */
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>

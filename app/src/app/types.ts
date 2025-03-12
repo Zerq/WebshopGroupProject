@@ -1,4 +1,8 @@
 
+export interface appModel {
+    products: Product[]   
+}
+
 export interface Dimensions {
     width: number;
     height: number;
