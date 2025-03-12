@@ -16,27 +16,21 @@ interface cardProps{
 //Send props to the component
 //export function Card({ recipe }: { recipe: Recipe }) {
     export function Card(props: cardProps) {
-        const recipe = props.product
+        const product = props.product
         return (
         <li>
-            <h2>{recipe.name}</h2>
+            <h2>{product.name}</h2>
             <div>
-                <Image src={recipe.image}
+                <Image src={product.image}
                     width={100}
                     height={100}
-                    alt={`Image of ${recipe.name}`}
+                    alt={`Image of ${product.name}`}
                 />
             </div>
-            <h3>Ingredients</h3>
+            <h3>Diverse</h3>
             <ul>
-                {recipe.ingredients.map((ingredient, index) =>
-                    <li key={index}>{ingredient}</li>)}
+                
             </ul>
-            <h3>Instructions</h3>
-            <ol>
-                {recipe.instructions.map((instruction, index) =>
-                    <li key={index}>{instruction}</li>)}
-            </ol>
         </li>
     )
 }
