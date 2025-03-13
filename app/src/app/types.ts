@@ -1,5 +1,5 @@
 
-export interface appModel {
+export interface AppModel {
     products: Product[]   
 }
 

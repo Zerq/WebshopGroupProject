@@ -6,10 +6,6 @@ const nextConfig: NextConfig = {
       remotePatterns: [
         {
           protocol: 'https',
-          hostname: 'loremflickr.com',
-        },
-        {
-          protocol: 'https',
           hostname: 'cdn.dummyjson.com',
         },
       ],
