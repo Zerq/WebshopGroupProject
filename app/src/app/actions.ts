@@ -29,7 +29,7 @@ export class Products {
     //static  method this you can call via Products.byCategory(some category goes here)
     public static getProductsByCategory(category:string){
         const inst = new Products();
-        inst.#url = "https://dummyjson.com/products/category?" + category;
+        inst.#url =`https://dummyjson.com/products/category/${category}/?`;
         return inst;
     }
 
