@@ -1,3 +1,4 @@
+import { Condiment, Rethink_Sans, Thasadith } from "next/font/google";
 import { Product } from "./types";
 
 export const fetchProducts = async () => {
@@ -19,24 +20,24 @@ export class Products {
 
 
     //static  method this you can call via Products.GetProducts()
-    public static GetProducts(){  
-        const inst= new Products();
+    public static GetProducts() {
+        const inst = new Products();
         inst.#url = "https://dummyjson.com/products?";
         return inst;
     }
 
 
     //static  method this you can call via Products.byCategory(some category goes here)
-    public static getProductsByCategory(category:string){
+    public static getProductsByCategory(category: string) {
         const inst = new Products();
-        inst.#url =`https://dummyjson.com/products/category/${category}/?`;
+        inst.#url = `https://dummyjson.com/products/category/${category}/?`;
         return inst;
     }
 
     //this is private and thus not visible outside
     #append(str: string) {
         const newFetch = new Products();
-         newFetch.#url = this.#url; 
+        newFetch.#url = this.#url;
 
         if (this.#url.endsWith("?")) {
             newFetch.#url += str;
@@ -52,6 +53,13 @@ export class Products {
         return this.#append("limit=" + nr);
     }
 
+    public conditional(callback: (produts: Products) => Products, condition = false) {
+        if (condition) {
+            return callback(this);
+        }
+        return this;
+    }
+
     public skip(nr: number) {
         return this.#append("skip=" + nr);
     }
@@ -60,11 +68,11 @@ export class Products {
         return this.#append("select=" + properties.join(","));
     }
 
-    public sortBy(sortCriteria:string, order: "asc"|"desc") {
+    public sortBy(sortCriteria: string, order: "asc" | "desc") {
         return this.#append(`sortBy=${sortCriteria}&oirder=${order}`);
     }
 
-    public async fetch(): Promise<Product[]>{
+    public async fetch(): Promise<Product[]> {
         const res = await fetch(this.#url)
         const data = await res.json();
         return data.products;

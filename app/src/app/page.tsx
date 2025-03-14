@@ -9,7 +9,7 @@ export default function Home() {
   const [state, setState] = useState([] as Product[]);
 
   useEffect(() => {
-    Products.GetProducts().limit(20).skip(40).fetch().then(n => setState(n));
+    Products.GetProducts().conditional(n=>  n.limit(20), true).skip(40).fetch().then(n => setState(n));
   },[])
 
   return (
