@@ -5,8 +5,8 @@
     margin: 1rem;
   
     .card{
-      background-color: rgb(221, 212, 195);
-      border: 1px solid grey;
+      background-color: var(--cardColor);
+      border: 1px solid var(--cardBorderColor);
       padding: 0.5rem;
       border-radius: 5px;
       position: relative;

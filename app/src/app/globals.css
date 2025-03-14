@@ -1,12 +1,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --cardColor: wheat;
+  --cardBorderColor:gray;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --cardColor: #473a21;
+    --cardBorderColor:rgb(56, 56, 56);
   }
 }
 
