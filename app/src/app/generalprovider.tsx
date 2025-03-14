@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { createContext, useState } from "react";
 import { appModel, appModel as AppModel } from "./types";

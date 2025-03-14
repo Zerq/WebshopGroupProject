@@ -8,11 +8,42 @@
       background-color: var(--cardColor);
       border: 1px solid var(--cardBorderColor);
       padding: 0.5rem;
-  
+      border-radius: 5px;
+      position: relative;
+      
       .imageWrapper{
         .image{
-          width: 100%;
+          width: 80%;
           height: auto;
+          margin-bottom: 180px;
+        }
+      }
+
+      .lowerHalf{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        border: 1px solid beige;
+        border-radius: 5px;
+        box-shadow: 2px 2px rgb(146, 146, 131);
+        padding: 10px;
+
+        .btnAddToCart{
+          border: 1px solid rgb(31, 22, 10);
+          border-radius: 6px;
+          height: 2rem;
+          padding: 0.2rem;
+          color: aliceblue;
+          background-color: rgb(105, 74, 33);
+        }
+        .paraD{
+          display: inline-flex;
+          font-weight: bold;
+          font-size: medium;
+          margin-bottom: 1rem;
         }
       }
     }
