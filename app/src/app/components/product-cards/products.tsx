@@ -1,7 +1,6 @@
 import Image from "next/image";
 import styles from "./cards.module.css";
 import { Product } from "../../types";
-import PaginationNav from "../navigation/pagination-nav";
 
 export function ProductList({ products }: { products: Product[] }) {
     if (!Array.isArray(products)) {
@@ -9,11 +8,10 @@ export function ProductList({ products }: { products: Product[] }) {
         return <p>No products available</p>;
     }
     return (
-        <><ul className={styles.cards} role="list">
+        <ul className={styles.cards} role="list">
             {products.map(product => <Card key={product.id} product={product} />
             )}
         </ul>
-        <PaginationNav path={"/products"} pagesCount={20} limit={25}></PaginationNav></>
     )
 }
 
