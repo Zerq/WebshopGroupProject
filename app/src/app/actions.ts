@@ -1,11 +1,10 @@
-import { Product } from "./types";
+import { ProductResult } from "./types";
 
-export const fetchProducts = async () => {
-    const res = await fetch('https://dummyjson.com/products');
-    return await res.json() as Product[];
+export const fetchProducts = async (limit = 25, skip = 0) => {
+    const res = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
+    const data = await res.json();
+    return data.products;
 }
-
-
 
 /**
  * this is a basic factory pattern
@@ -64,10 +63,10 @@ export class Products {
         return this.#append(`sortBy=${sortCriteria}&oirder=${order}`);
     }
 
-    public async fetch(): Promise<Product[]>{
+    public async fetch(): Promise<ProductResult>{
         const res = await fetch(this.#url)
         const data = await res.json();
-        return data.products;
+        return data;
     }
 
 }

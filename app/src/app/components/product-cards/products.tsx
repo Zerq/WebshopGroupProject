@@ -3,10 +3,13 @@ import styles from "./cards.module.css";
 import { Product } from "../../types";
 
 export function ProductList({ products }: { products: Product[] }) {
+    if (!Array.isArray(products)) {
+        console.error("products is not an array:", products);
+        return <p>No products available</p>;
+    }
     return (
         <ul className={styles.cards} role="list">
-            {products.map(product =>
-                <Card key={product.id} product={product} />
+            {products.map(product => <Card key={product.id} product={product} />
             )}
         </ul>
     )

@@ -1,6 +1,11 @@
 
-export interface appModel {
+export interface AppModel {
     products: Product[]   
+}
+
+export interface ProductResult {
+    products: Product[],
+    total: number
 }
 
 export interface Dimensions {
