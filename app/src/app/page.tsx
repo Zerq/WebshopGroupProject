@@ -1,26 +1,22 @@
 "use client";
-import { useContext, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ProductList } from "./components/product-cards/products";
-import { GeneralContext } from "./generalprovider";
+import { Product } from "./types";
+import { Products } from "./actions";
 
 export default function Home() {
+  const [state, setState] = useState([] as Product[]);
+  const limit= 30;
+  const skip = 60;
 
-  
-  const Context = useContext(GeneralContext);
-  if (!Context) throw new Error('GeneralContext måste användas inom en GeneralProvider');
-  const { state, getProducts } = Context;
-
-  useEffect(()=> {
-    (async ()=> {
-      await getProducts(n=> n.limit(20).skip(40));
-    })()
-  })  
-
+  useEffect(() =>{ 
+    Products.GetProducts().limit(limit).skip(skip).fetch().then(n=> setState(n));
+   }, []);
 
   return (
     <div>
       <main>
-        <ProductList products={state?.products ?? []}/>
+        <ProductList products={state ?? []} />
       </main>
     </div>
   );

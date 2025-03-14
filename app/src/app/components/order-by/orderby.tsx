@@ -3,7 +3,7 @@ import { SyntheticEvent } from "react";
 export default function OrderBy(){
 
     const select = (e:SyntheticEvent<HTMLSelectElement, Event>)=> {
-
+        console.log(e);
     };
 
     return <div>
