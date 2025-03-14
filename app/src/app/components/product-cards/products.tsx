@@ -17,27 +17,34 @@ export function ProductList({ products }: { products: Product[] }) {
     )
 }
 
-interface cardProps{
+interface cardProps {
     product: Product
 }
 //Send props to the component
 //export function Card({ recipe }: { recipe: Recipe }) {
-    export function Card(props: cardProps) {
-        const product = props.product
-        return (
+export function Card(props: cardProps) {
+    const product = props.product
+    return (
         <li className={styles.card}>
             <h2>{product.title}</h2>
-            <div>
-            <Image className={styles.image} src={product.images[0]}
-                    width={100}
-                    height={100}
+            <div className={styles.imageWrapper}>
+                <Image className={styles.image} src={product.images[0]}
+                    width={80}
+                    height={80}
                     alt={`Image of ${product.title}`}
                 />
+            </div>
+            <div className={styles.lowerHalf}>
+                <div>
+                    <div>
+                    <p className={styles.paraD}>Kundomdöme: </p>{product.rating} av 5
+                    </div>
+                    <p>{product.description}</p>
                 </div>
-            <h3>Diverse</h3>
-            <ul>
-                
-            </ul>
+                <div>
+                    <button className={styles.btnAddToCart}>Lägg i kundvagn</button>
+                </div>
+            </div>
         </li>
     )
 }

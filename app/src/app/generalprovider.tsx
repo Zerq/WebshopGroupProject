@@ -5,37 +5,20 @@ import { fetchProducts } from "./actions";
 
 interface GeneralContextInterface {
     state: AppModel;
-
-    setState: (newState: AppModel)=> void;
-    getProducts: (limit?: number, skip?: number) => Promise<void>;
-    // skip: number;
-    // setSkip: (value: number) => void;
+    setState: (newState: AppModel) => void;
+    getProducts: (callback: (products: Products) => Products) => Promise<void>
+    getProductsByCategory: (category: string, callback: (Products: Products) => Products) => Promise<void>;
 }
 
 export const GeneralContext = createContext<GeneralContextInterface | null>(null);
 
 export function GeneralProvider({ children }: { children: React.ReactNode; }) {
 
-    const [state, setState] = useState({ products: [] } as AppModel);
-
-    const getProducts = async (limit= 25, skip=0) => {
-        try {
-            const data = await fetchProducts(limit, skip);
-            if (!Array.isArray(data)) {
-                console.error("fetchProducts returned non-array:", data);
-                return;
-            }
-            const newState = Object.assign({}, state) as AppModel;
-            newState.products = data;
-            setState(newState);
-            // setState({ ...state, products: data });
-        } catch (error) {
-            console.error("Error fetching products:", error);
-        }
-    };
+    const getProduct = () => fetchProducts();
+    const [state, setState] =  useState({ products: [] } as appModel);
 
     return (
-        <GeneralContext.Provider value={{ state, setState, getProducts }}>
+        <GeneralContext.Provider value={{ state, setState, getProduct }}>
             {children}
         </GeneralContext.Provider>
     );
