@@ -9,6 +9,7 @@ import PaginationNav from "./components/navigation/pagination-nav";
 export default function Home() {
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
   let query = Products.GetProducts();
+
   const queryParameters = new URLSearchParams(window.location.search)
 
   
@@ -27,7 +28,6 @@ export default function Home() {
     if (Number.isNaN(numberSkip)) Error("Skip is not a number");
     query = query.skip(numberSkip);
   }
-
 
   useEffect(() => {
     query.fetch().then(n => setState(n));
