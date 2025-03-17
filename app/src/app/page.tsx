@@ -28,7 +28,7 @@ export default function Home() {
     getIntParameter("skip", n => query.skip(n));
 
     query.fetch().then(n => setState(n));
-  }, [window.location.search]);
+  }, []);
 
 
   const limit = 25;
