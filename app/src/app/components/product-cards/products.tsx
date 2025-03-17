@@ -3,13 +3,10 @@ import styles from "./cards.module.css";
 import { Product } from "../../types";
 
 export function ProductList({ products }: { products: Product[] }) {
-    if (!Array.isArray(products)) {
-        console.error("products is not an array:", products);
-        return <p>No products available</p>;
-    }
     return (
         <ul className={styles.cards} role="list">
-            {products.map(product => <Card key={product.id} product={product} />
+            {products.map(product =>
+                <Card key={product.id} product={product} />
             )}
         </ul>
     )
@@ -35,12 +32,16 @@ export function Card(props: cardProps) {
             <div className={styles.lowerHalf}>
                 <div>
                     <div>
-                    <p className={styles.paraD}>Kundomdöme: </p>{product.rating} av 5
+                        <p className={styles.paraD}>Pris:</p>{product.price} kr
                     </div>
-                    <p>{product.description}</p>
+                    <div>
+                        <p className={styles.paraD}>Kundbetyg:</p>{product.rating} av 5
+                    </div>
+                    <p className={styles.paraSmall}>{product.description}</p>
                 </div>
-                <div>
-                    <button className={styles.btnAddToCart}>Lägg i kundvagn</button>
+                <div className={styles.btnsWrapper}>
+                    <button className={styles.btnSeeDetails}>Se detaljer</button>
+                    <button className={styles.btnBuy}>Köp</button>
                 </div>
             </div>
         </li>
