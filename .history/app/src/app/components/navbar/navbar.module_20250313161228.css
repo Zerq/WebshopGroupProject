@@ -1,0 +1,26 @@
+.navbarContainer {
+    display:flex;
+    font-size: 4rem;
+    margin: 1rem;
+
+    background-color: blue;
+    align-items: center;
+
+    justify-content: spa;
+    
+    .logo {
+        width:25%;
+    }
+
+    .menu {
+        width: 50%;
+        justify-content: space-around;
+    }
+
+    .icons {
+        width: 25%;
+        justify-items: center;
+    }
+
+    
+}

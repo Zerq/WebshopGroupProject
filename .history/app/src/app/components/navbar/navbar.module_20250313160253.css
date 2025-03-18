@@ -1,0 +1,8 @@
+.navbarContainer {
+    display:flex;
+    
+    
+    .menu {
+        width:25%;
+    }
+}

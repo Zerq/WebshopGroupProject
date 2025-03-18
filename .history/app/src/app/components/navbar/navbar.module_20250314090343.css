@@ -1,0 +1,30 @@
+.navbarContainer {
+    display:flex;
+    font-size: 3rem;
+    margin: 4rem;  /* temp*/ 
+    background-color: blue;
+    
+
+    justify-content: space-between;
+    
+    .logo {
+        width:2%;
+    }
+
+    .menu {
+        display:flex;
+        width: 25%;
+        justify-content: space-between;
+        gap:60px;
+        background-color: yellow;
+    }
+
+    .icons {
+        display:flex;
+        width: 25%;
+        justify-content: end;
+        background-color: blue;
+    }
+
+    
+}

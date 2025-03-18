@@ -1,0 +1,23 @@
+.navbarContainer {
+    display:flex;
+    font-size: 4rem;
+    margin: 1rem;
+
+    background-color: blue;
+    align-items: center;
+    
+    .logo {
+        width:25%;
+    }
+
+    .menu {
+        width: 50%;
+    }
+
+    .icons {
+        width: 25%;
+        justify-items: center;
+    }
+
+    
+}
