@@ -1,9 +1,0 @@
-.navbarContainer {
-    display:flex;
-    font-size: 5rem;
-    margin: 1rem;
-    
-    .menu {
-        width:25%;
-    }
-}
