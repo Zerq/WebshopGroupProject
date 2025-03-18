@@ -1,39 +1,35 @@
-'use client';
+'use client'
+/* Runs on serverside expect components that runs client side*/
+
 
 import Link from 'next/link';
 import styles from './topNavigation.module.css';
-
 import Menu from './Menu';
 import Theme from './Theme'
 import SearchBar from './SearchBar';
-
-import {useState} from "react"
-import Image from 'next/image';
 
 
 
 export default function TopNavigation () {
     return (  
         <nav className={styles.topNavigationContainer}>
-            <div className={styles.siteLogo}>
-                <Link href="/">WEBSHOPPEN</Link>
-            </div>
-
-
+            
         {/* MOBILE SCREENS  */}
         <div className={styles.mobileView}>
-            <div> 
-                <Theme/>
-                <Menu/>
-            </div>
+            <Link className={styles.siteLogo} href="/">webshoppen</Link> 
+            <Menu/>
         </div>
 
 
         {/* LAPTOP SCREENS  */}
         <div className={styles.tabletView}> 
-            <div> 
+            <div className={styles.tabletContainerUno}> 
+                <Link className={styles.siteLogo} href="/">webshoppen</Link> 
+            </div> 
+            <div className={styles.tabletContainerDos}>  
                 <SearchBar/>
                 <Theme/>
+                <Link href="/cart">🛒</Link>
             </div>   
         </div>
 
@@ -82,7 +78,6 @@ export default function TopNavigation () {
 }
 
 */}
-
 
 
 
