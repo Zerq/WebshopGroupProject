@@ -1,0 +1,234 @@
+/* Note to self: Prolly update with hook to detect viewport here, (look also the other method noted cant remember now. But hiding is fine as done and easier so will do it if time, also ask group*/
+
+/*---------------------------------------
+1. GENERAL STYLES
+---------------------------------------*/
+
+.topNavigationContainer {
+    display: flex;
+    position: relative; 
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    color: white;
+    z-index: 100; 
+}
+
+.siteLogo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+
+
+
+
+
+
+.topNavigationContainer{
+    color:white;
+}
+
+
+/* Media Query Setup*/
+@media (max-width: 759px){
+.mobileView { display: flex; }
+.tabletView { display: none; }
+.desktopView { display: none; }
+}
+
+/* Tablet */
+@media (min-width: 760px) and (max-width: 959px) {
+  .mobileView { display: none; }
+  .tabletView { display: flex; }
+  .desktopView { display: none; }
+}
+
+/* Desktop */
+@media (min-width: 960px) {
+  .mobileView { display: none; }
+  .tabletView { display: none; }
+  .desktopView { display: flex; }
+}
+
+
+
+
+
+
+
+/* Defualt - "mobile-first" <760 
+.mobileView {
+    display:flex;
+  }
+
+.tabletview{
+    display:none;
+}
+
+.desktopview{
+    display:none;
+}
+
+/* */
+
+
+/* Laptop (Medium screens) - 760px to 959px 
+@media (min-width: 760px) and (max-width: 959px) {
+    .mobileView {
+        display: none;
+      }
+
+}
+
+
+/* Desktop (/Large screens) - 960px and above 
+@media (min-width: 960px) {
+    .mobileView {
+        display: none;
+      }
+      
+      .tabletView {
+        display: none;
+      }
+  }
+
+
+
+
+
+/* Mobile version - < 720 px
+
+@media screen and (max-width: 720px) {
+     
+
+    .navbarContainerMobile {
+    height: 80px;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 1); 
+
+    
+    display:flex;
+    position:sticky;
+    top:0;
+    justify-content: space-between;
+    align-items: center;
+    
+    font-size: 2rem;
+    line-height: 2rem;
+    letter-spacing: 0.2rem;
+
+    z-index:100;
+
+    
+    .hamburgermenu {
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+
+        .dropdownMenu {
+            position:fixed;
+            left:0;
+            top:60px;
+            width: 100%;
+            height: calc(100vh - 60px);
+            color: white;
+            background-color: rgba(0, 0, 0, 1); 
+            overflow: hidden; 
+            
+
+
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 7rem;
+            
+            font-size: 1.5rem;
+        }
+    }
+}
+
+"Desktop" version - > 720 px
+
+@media screen and (min-width: 720px) {
+
+
+            .navbarContainerDesktop {
+                height: 60px;
+                padding: 16px;
+                width: 100%;
+                
+                display:flex;
+
+            .logo {
+                width:20%;
+            }
+
+            .menu {
+                display:flex;
+                width: 40%;
+                justify-content: space-between;
+                gap:60px;
+                background-color: yellow;
+            }
+
+            .icons {
+                display:flex;
+                width: 40%;
+                justify-content: end;
+                background-color: blue;
+            }
+        }  
+    }
+}
+
+
+
+/*
+
+.navbarContainerDesktop {
+        height: 60px;
+        padding: 16px;
+        width: 100%;
+        
+        display:flex;
+
+    .logo {
+        width:20%;
+    }
+
+    .menu {
+        display:flex;
+        width: 40%;
+        justify-content: space-between;
+        gap:60px;
+        background-color: yellow;
+    }
+
+    .icons {
+        display:flex;
+        width: 40%;
+        justify-content: end;
+        background-color: blue;
+    }
+}  
+
+     
+
+.navbarContainerDesktop {
+    display:flex;
+    font-size: 2.5rem;
+    margin: 4rem;  
+    background-color: blue;
+    
+
+    justify-content: space-between;
+    
+
+ 
+
+    }
+}
+
+*/
