@@ -45,8 +45,11 @@ export default function TopNavigation () {
                     <Link href="/contact">Contact</Link>
                 </div>
                 <SearchBar/>
-                <Theme/>
-                <Link href="/cart">🛒</Link>
+                <Theme />
+                <div>
+                    <span className="cart-badge"></span>
+                    <Link href="/cart">🛒</Link>
+                </div>
             </div>
         </nav>
     )
