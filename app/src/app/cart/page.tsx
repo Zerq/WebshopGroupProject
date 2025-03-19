@@ -15,10 +15,10 @@ export default function CartPage() {
             {
                 cartItems.length === 0 ? <h2 className={styles.emptyCart}>Kundvagnen är tom.</h2>:null
             }
-            <div>
+            <ul className={styles.cartList}>
                 {
                     cartItems.map((item: CartItem, index: number) => (
-                        <div key={index} className={styles.cardCart}>
+                        <li key={index} className={styles.cardCart}>
                             <Image
                                 src={item.images[0]}
                                 alt={item.title}
@@ -27,7 +27,8 @@ export default function CartPage() {
                             />
                             <div className={styles.title}>{item.title}</div>
                             <div className={styles.s1}>
-                                <h2>{Math.ceil(item.price * item.quantity)} kr</h2>
+                                <h2><span className={styles.priceQuantity}>{Math.ceil(item.price * item.quantity)}</span>
+                                    <span className={styles.priceCurrency}> kr</span></h2>
                                 <div className={styles.incredecre}>
                                     <button
                                         onClick={() => {
@@ -45,13 +46,17 @@ export default function CartPage() {
                                     </svg>
                                 </button>
                             </div>
-                        </div>
+                        </li>
                     ))
                 }
-                <div className={styles.totalPrice} >
-                    <h2>Totalt: {totalPrice} kr</h2>
+                <div className={styles.totalPriceWrapper} >
+                    <h2>
+                        <span className={styles.fontBold}>Totalt: </span>
+                        <span className={styles.totalPrice}>{totalPrice}</span>
+                        <span className={styles.currency}> kr</span>
+                    </h2>
                 </div>
-            </div>
+            </ul>
         </div>
     )
 }
