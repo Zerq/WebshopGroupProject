@@ -1,95 +1,44 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+import { useEffect, useState } from "react";
+import { ProductList } from "./components/product-cards/products";
+import { Products } from "./actions";
+import { ProductResult } from "./types";
+import PaginationNav from "./components/navigation/pagination-nav";
+
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
+  useEffect(() => {
+    let query = Products.GetProducts();
+
+    const queryParameters = new URLSearchParams(window.location.search)
+    const getIntParameter = (name: string, callback: (n: number) => Products) => {
+      if (queryParameters.has(name)) { //does this query string paramater exist?
+        const val = queryParameters.get(name);
+
+        if (!val) throw new Error(name + " is null");  //dont allow null
+        const valAsNumber = Number.parseInt(val);
+
+        if (Number.isNaN(valAsNumber)) Error(`${name} is not a number`); //dont allow non numeric values
+        query = callback(valAsNumber);
+      }
+    }
+    getIntParameter("limit", n => query.limit(n))
+    getIntParameter("skip", n => query.skip(n));
+
+    query.fetch().then(n => setState(n));
+  }, []);
+
+
+  const limit = 25;
+  const pageCount = Math.ceil(state.total / limit);
+  return (
+    <div>
+      <main>
+        <ProductList products={state.products ?? []} />
+        <PaginationNav path={"/products"} pagesCount={pageCount} limit={limit}></PaginationNav>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
