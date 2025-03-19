@@ -6,50 +6,82 @@
 
 .topNavigationContainer {
     display: flex;
-    position: relative; 
+    position: relative;
     align-items: center;
     justify-content: space-between;
     background-color: #333;
     color: white;
-    z-index: 100; 
+    z-index: 100;
 }
 
 .siteLogo {
     font-size: 1.5rem;
     font-weight: bold;
-  }
+}
+
+
+.shoppingcart {
+    padding: 0 25px 0 15px;
+}
+
+.cartCount {
+    font-size: 12px;
+    vertical-align: middle;
+    margin-left: 1px;
+}
 
 
 
-
-
-
-
-.topNavigationContainer{
-    color:white;
+.topNavigationContainer {
+    color: white;
 }
 
 
 /* Media Query Setup*/
-@media (max-width: 759px){
-.mobileView { display: flex; }
-.tabletView { display: none; }
-.desktopView { display: none; }
+@media (max-width: 759px) {
+    .mobileView {
+        display: flex;
+    }
+
+    .tabletView {
+        display: none;
+    }
+
+    .desktopView {
+        display: none;
+    }
 }
 
 /* Tablet */
 @media (min-width: 760px) and (max-width: 959px) {
-  .mobileView { display: none; }
-  .tabletView { display: flex; }
-  .desktopView { display: none; }
+    .mobileView {
+        display: none;
+    }
+
+    .tabletView {
+        display: flex;
+    }
+
+    .desktopView {
+        display: none;
+    }
 }
 
 /* Desktop */
 @media (min-width: 960px) {
-  .mobileView { display: none; }
-  .tabletView { display: none; }
-  .desktopView { display: flex; }
+    .mobileView {
+        display: none;
+    }
+
+    .tabletView {
+        display: none;
+    }
+
+    .desktopView {
+        display: flex;
+    }
 }
+
 
 
 

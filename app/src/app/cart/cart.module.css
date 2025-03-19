@@ -1,7 +1,7 @@
 .cartHead {
     font-size: 2rem;
     font-weight: 500;
-    color:#333;
+    color: #333;
     text-align: center;
     padding: .5em 0 0 1em;
 }
@@ -91,4 +91,16 @@
         font-weight: 500;
         color: #333;
     }
+}
+
+.totalPrice {
+    text-align: right;
+    margin-top: 20px;
+    padding-right: 2em;
+
+    h2 {
+        font-weight: 500;
+        color: #333;
+    }
+
 }

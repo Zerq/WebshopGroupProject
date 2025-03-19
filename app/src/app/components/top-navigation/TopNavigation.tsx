@@ -16,42 +16,44 @@ export default function TopNavigation() {
     useEffect(() => {
         console.log("cartItems updated:", cartItems);
     }, [cartItems]);
-    return (  
+    return (
         <nav className={styles.topNavigationContainer}>
             <div className={styles.siteLogo}>
                 <Link href="/">WEBSHOPPEN</Link>
             </div>
 
 
-        {/* MOBILE SCREENS  */}
-        <div className={styles.mobileView}>
-            <div> 
-                <Theme/>
-                <Menu/>
+            {/* MOBILE SCREENS  */}
+            <div className={styles.mobileView}>
+                <div>
+                    <Theme />
+                    <Menu />
+                </div>
             </div>
-        </div>
 
 
-        {/* LAPTOP SCREENS  */}
-        <div className={styles.tabletView}> 
-            <div> 
-                <SearchBar/>
-                <Theme/>
-            </div>   
-        </div>
+            {/* LAPTOP SCREENS  */}
+            <div className={styles.tabletView}>
+                <div>
+                    <SearchBar />
+                    <Theme />
+                </div>
+            </div>
 
-         {/* DESKTOPSCREENS */}
-            <div className={styles.desktopView}>  
+            {/* DESKTOPSCREENS */}
+            <div className={styles.desktopView}>
                 <div className={styles.navLinks}>
                     <Link href="/">Newsletter</Link>
                     <Link href="/about">About</Link>
                     <Link href="/contact">Contact</Link>
                 </div>
-                <SearchBar/>
+                <SearchBar />
                 <Theme />
-                <div>
+                <div className={styles.shoppingcart}>
                     <Link href="/cart">🛒</Link>
-                    { cartItems.reduce((total, item) => total + item.quantity, 0) }
+                    <span className={styles.cartCount}>
+                        {cartItems.reduce((total, item) => total + item.quantity, 0)}
+                    </span>
                 </div>
             </div>
         </nav>

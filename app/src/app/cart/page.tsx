@@ -6,6 +6,8 @@ import { useCart } from "../generalprovider";
 
 export default function CartPage() {
     const { cartItems, incrementCartItem, decrementCartItem, removeCartItem } = useCart();
+    const totalPrice = Math.ceil(cartItems.reduce((total, item) => total + item.price * item.quantity, 0));
+
 
     return (
         <div className={styles.cartPage}>
@@ -25,7 +27,7 @@ export default function CartPage() {
                             />
                             <div className={styles.title}>{item.title}</div>
                             <div className={styles.s1}>
-                                <h2>{item.price * item.quantity} Kr</h2>
+                                <h2>{Math.ceil(item.price * item.quantity)} kr</h2>
                                 <div className={styles.incredecre}>
                                     <button
                                         onClick={() => {
@@ -46,6 +48,9 @@ export default function CartPage() {
                         </div>
                     ))
                 }
+                <div className={styles.totalPrice} >
+                    <h2>Totalt: {totalPrice} kr</h2>
+                </div>
             </div>
         </div>
     )
