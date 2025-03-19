@@ -15,14 +15,14 @@ export default function TopNavigation () {
         <nav className={styles.topNavigationContainer}>
             
         {/* MOBILE SCREENS  */}
-        <div className={styles.mobileView}>
+        <div className={styles.mobileViewContainer}>
             <Link className={styles.siteLogo} href="/">webshoppen</Link> 
             <Menu/>
         </div>
 
 
-        {/* LAPTOP SCREENS  */}
-        <div className={styles.tabletView}> 
+        {/* TABLET SCREENS  */}
+        <div className={styles.tabletViewContainer}> 
             <div className={styles.tabletContainerUno}> 
                 <Link className={styles.siteLogo} href="/">webshoppen</Link> 
             </div> 
@@ -34,17 +34,22 @@ export default function TopNavigation () {
         </div>
 
          {/* DESKTOPSCREENS */}
-            <div className={styles.desktopView}>  
-                <div className={styles.navLinks}>
-                    <Link href="/">Newsletter</Link>
-                    <Link href="/about">About</Link>
-                    <Link href="/contact">Contact</Link>
-                </div>
+        <div className={styles.desktopViewContainer}> 
+            <div className={styles.logoWrapper}> 
+                <Link className={styles.siteLogo} href="/">webshoppen</Link> 
+            </div>  
+                <div className={styles.navLinksWrapper}>
+                    <Link href="#">Newsletter</Link>
+                    <Link href="#">About</Link>
+                    <Link href="#">Contact</Link>
                 <SearchBar/>
-                <Theme/>
-                <Link href="/cart">🛒</Link>
+                <div className={styles.navIconsWrapper}>
+            <Theme/>
+            <Link href="/cart">🛒</Link>
             </div>
-        </nav>
+        </div>
+        </div>
+    </nav>
     )
 }
 

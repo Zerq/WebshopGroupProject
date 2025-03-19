@@ -3,16 +3,12 @@
 ---------------------------------------*/
 
 .topNavigationContainer {
-    display: flex;
-    position: relative; /* setup to use hamburger menu set up as absolut positionin - ASK in group no one knows that is a bad apprach*/
-    align-items: center;
-    justify-content: space-between;
     background-color: rgb(14, 14, 14);
-    color: rgb(240, 239, 239);
-    z-index: 100; 
+    color: rgb(240, 239, 239); 
     padding: 16px;
+    height:75px;
 
-    height: 75px;
+    
 
 }
 
@@ -22,12 +18,18 @@
 2. MOBILE DEFUALT <760px
 ---------------------------------------*/
 
-.mobileView {
-    display:flex;
-    align-items: center;
-    height:100%;
+
+
+.mobileViewContainer {
+    position: fixed; 
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 75px;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
 
    
 }
@@ -44,21 +46,20 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 4rem;
+        gap: 6rem;
         font-size: 1.75rem;
         
-        position:absolute;
+        position:fixed;
         left:0px;
-        top:75px;
+        top:60px;
         width: 100%;
-        height: calc(100vh - 75px) /* To leave space for the navbar*/;
+        height: 100vh;/* To leave space for the navbar*/;
         background-color: rgb(207, 63, 63); 
-        overflow: hidden;
-
-        z-index:99;
+        overflow: auto;
+        z-index:50;
     }
 
-    .tabletView, .desktopView {
+    .tabletViewContainer, .desktopViewContainer {
         display: none;
     }
 
@@ -66,23 +67,47 @@
 
 
 /*---------------------------------------
-3. Tablet View - 760-940
+3. Tablet View - 760-940 - NOT ACTIVE PART OF CSS ATM IF NEEDED (WILL REMOVE BUT NOW IN FOR TIME BEING)
 ---------------------------------------*/
 
-@media (min-width: 760px) and (max-width: 959px) {
-    .tabletView {
-        display:flex;
-        width: 100%;
+@media (min-width: 760px) {
+    .tabletViewContainer {
         background:blue;
+
+        width: 100%;
+        height: 75px;
+        padding: 0 16px;
+
+        display:flex;
         align-items: center;
+        height: 100%;
         /* rest of styling for tabletView - this is ok?*/
+    }
+ 
+
+    .searchContainer {
+        background: red;
+
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        padding: .5rem 1rem;
+        border: 100px dottet rgb(128, 0, 79);
+        
+    }
+
+    .searchInput{
+        height: 100%;
+        width: 100%;
+        border-radius: 50px;
     }
 
     .tabletContainerUno {
         display:flex;
         width: 50%;
         gap: 2rem;
-        background:red;
+        background: yellow;
         
         /* rest of styling for tabletView - this is ok?*/
     }
@@ -92,13 +117,13 @@
         width:50%;
         gap:1rem;
         justify-content: flex-end;
-        width: 70%;
-        background:purple;
+        width: 50%;
+        background: grey;
         /* rest of styling for tabletView - this is ok?*/
     }
 
 
-    .mobileView, .desktopView {
+    .mobileViewContainer, .desktopViewContainer {
         display: none;
     }
 }
@@ -111,15 +136,86 @@
 ---------------------------------------*/
 
 
-@media (min-width: 960px) {
-    .desktopView {
+@media (min-width: 760px) {
+    .desktopViewContainer {
+        gap:70px;
+    
         display:flex;
-        /* rest of styling for tabletView - this is ok?*/
+        align-items:center;
+        justify-content: space-between;
+        
+        width: 100%;
+        height: 75px;
+        padding: 0 16px;
     }
 
-    .mobileView, .tabletView {
+
+
+        .siteLogo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;        
+            }
+
+        .navLinksWrapper {
+            display: flex;
+            flex:1;
+            justify-content: center;  
+            gap: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .searchBarOuterWrapper{
+            width: 100%;
+            display:flex;
+            justify-content: center;
+
+        }
+
+        .searchBarInnerWrapper{
+            display:flex;
+            position:relative;
+            align-items: center;
+            width: 70%;
+            height: 2.25rem;
+        }
+
+        .searchInput{
+            flex: 1;
+            outline:none;
+            color:black;
+            text-align: center;
+            font-size:0.75rem;
+        }
+
+        .searchButton{
+            position:absolute;
+            padding-left: 1rem;
+            border: none;
+            cursor: pointer;
+            size: 0.75rem;
+            background:none;
+        }
+
+        .navIconsWrapper{
+            display:flex;
+            flex:1;
+            gap:1.5rem;
+            
+            width:40%;
+            font-size:1.5rem;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+
+
+    .mobileViewContainer, .tabletViewContainer {
         display: none;
     }
+
+
 }
 
 

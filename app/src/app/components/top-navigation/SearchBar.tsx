@@ -8,28 +8,30 @@ export default function SearchBar() {
     
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log('Search term:', searchQuery);
+        console.log('Search term:', searchQuery); // check done, works 
        
        // CODELOGIC INPUT LATER HERE - USE A SEARCH FILTER / CHECK KARLAXEL CODE FIRST 
     };
     return (
         <form 
-            className={styles.searchContainer}
+            className={styles.searchBarOuterWrapper}
             onSubmit={handleSubmit}
         >
-            <input 
-                className={styles.searchInput}
-                type="text" 
-                placeholder="Search for products!" 
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-            />
+            <div className={styles.searchBarInnerWrapper}>
             <button 
                 className={styles.searchButton}
                 type="submit" 
             >
                 🔍
             </button>
+            <input 
+                className={styles.searchInput}
+                type="text" 
+                placeholder="What are you looking for?" 
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+            />
+            </div>
         </form>
     );
 }
