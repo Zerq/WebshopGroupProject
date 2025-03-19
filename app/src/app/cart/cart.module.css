@@ -1,15 +1,24 @@
+ :root {
+     --color-primary: #333;
+     --color-secondary: #7575753f;
+     --color-border: #3333333f;
+     --color-bg-button: #333;
+     --color-bg-button-hover: #3333333f;
+     --color-text-light: #fff;
+ }
+
  h1.cartHead {
      text-align: center;
      padding: .5em 0 0 1em;
      font-size: clamp(1.6rem, 2vw 2.2rem);
      font-weight: 500;
-     color: #333;
+     color: var(--color-primary)
  }
 
  .emptyCart {
      font-size: 1rem;
      font-weight: 500;
-     color: #333;
+     color: var(--color-primary);
      text-align: center;
      margin: 20px 0px;
  }
@@ -19,7 +28,7 @@
      justify-content: space-between;
      align-items: center;
      padding: clamp(.2rem, 1vw, .6rem);
-     border-bottom: 1px solid #3333333f;
+     border-bottom: 1px solid var(--color-border);
 
      .title {
          font-size: clamp(0.8rem, 2.1vw, 1.2rem);
@@ -45,24 +54,21 @@
          h3 {
              font-size: clamp(1rem, 1.2rem, 1.3rem);
              font-weight: 500;
-             color: #333;
+             color: var(--color-primary)
          }
 
          h2 {
              width: fit-content;
              height: 35px;
-             color: #333;
-             border: 1px solid #7575753f;
+             color: var(--color-primary);
+             border: 1px solid var(--color-secondary);
              border-radius: 10px;
              padding: 1px 10px;
              white-space: nowrap;
 
-             .priceQuantity {
-                 font-size: clamp(.8rem, 2vw, .9rem);
-                 font-weight: 400;
-             }
-
+             .priceQuantity,
              .priceCurrency {
+                 color: var(--color-primary);
                  font-size: clamp(.8rem, 2vw, .9rem);
                  font-weight: 400;
              }
@@ -88,19 +94,19 @@
          height: clamp(23px, 2vw, 26px);
          border-radius: 50%;
          border: none;
-         background-color: #333;
-         color: #fff;
+         background-color: var(--color-bg-button);
+         color: var(--color-text-light);
          cursor: pointer;
      }
 
      button:hover {
-         background-color: #3333333f;
+         background-color: var(--color-bg-button-hover);
      }
 
      span {
          font-size: clamp(0.8rem, 2vw, 1.0rem);
          font-weight: 500;
-         color: #333;
+         color: var(--color-primary);
      }
  }
 
@@ -110,22 +116,18 @@
      padding-right: clamp(1rem, 4vw, 1rem);
 
      h2 {
+
+         .totalPrice,
+         .currency {
+             color: var(--color-primary);
+             font-size: clamp(1rem, 1vw, 1.5rem);
+             font-weight: 500;
+         }
+
          .fontBold {
              font-size: clamp(1rem, 1vw, 1.5rem);
              font-weight: 600;
-             color: #333;
-         }
-
-         .totalPrice {
-             font-size: clamp(1rem, 1vw, 1.5rem);
-             font-weight: 500;
-             color: #333;
-         }
-
-         .currency {
-             font-size: clamp(1rem, 1vw, 1.5rem);
-             font-weight: 500;
-             color: #333;
+             color: var(--color-primary);
          }
      }
  }
