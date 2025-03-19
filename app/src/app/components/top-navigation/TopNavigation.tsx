@@ -1,8 +1,9 @@
-'use client';
+'use client'
+/* Runs on serverside expect components that runs client side*/
+
 
 import Link from 'next/link';
 import styles from './topNavigation.module.css';
-
 import Menu from './Menu';
 import Theme from './Theme'
 import SearchBar from './SearchBar';
@@ -18,45 +19,43 @@ export default function TopNavigation() {
     }, [cartItems]);
     return (
         <nav className={styles.topNavigationContainer}>
-            <div className={styles.siteLogo}>
-                <Link href="/">WEBSHOPPEN</Link>
+            
+        {/* MOBILE SCREENS  */}
+        <div className={styles.mobileViewContainer}>
+            <Link className={styles.siteLogo} href="/">webshoppen</Link> 
+            <Menu/>
+        </div>
+
+
+        {/* TABLET SCREENS  */}
+        <div className={styles.tabletViewContainer}> 
+            <div className={styles.tabletContainerUno}> 
+                <Link className={styles.siteLogo} href="/">webshoppen</Link> 
+            </div> 
+            <div className={styles.tabletContainerDos}>  
+                <SearchBar/>
+                <Theme/>
+                <Link href="/cart">🛒</Link>
+            </div>   
+        </div>
+
+         {/* DESKTOPSCREENS */}
+        <div className={styles.desktopViewContainer}> 
+            <div className={styles.logoWrapper}> 
+                <Link className={styles.siteLogo} href="/">webshoppen</Link> 
+            </div>  
+                <div className={styles.navLinksWrapper}>
+                    <Link href="#">Newsletter</Link>
+                    <Link href="#">About</Link>
+                    <Link href="#">Contact</Link>
+                <SearchBar/>
+                <div className={styles.navIconsWrapper}>
+            <Theme/>
+            <Link href="/cart">🛒</Link>
             </div>
-
-
-            {/* MOBILE SCREENS  */}
-            <div className={styles.mobileView}>
-                <div>
-                    <Theme />
-                    <Menu />
-                </div>
-            </div>
-
-
-            {/* LAPTOP SCREENS  */}
-            <div className={styles.tabletView}>
-                <div>
-                    <SearchBar />
-                    <Theme />
-                </div>
-            </div>
-
-            {/* DESKTOPSCREENS */}
-            <div className={styles.desktopView}>
-                <div className={styles.navLinks}>
-                    <Link href="/">Newsletter</Link>
-                    <Link href="/about">About</Link>
-                    <Link href="/contact">Contact</Link>
-                </div>
-                <SearchBar />
-                <Theme />
-                <div className={styles.shoppingcart}>
-                    <Link href="/cart">🛒</Link>
-                    <span className={styles.cartCount}>
-                        {cartItems.reduce((total, item) => total + item.quantity, 0)}
-                    </span>
-                </div>
-            </div>
-        </nav>
+        </div>
+        </div>
+    </nav>
     )
 }
 
@@ -90,7 +89,6 @@ export default function TopNavigation() {
 }
 
 */}
-
 
 
 
