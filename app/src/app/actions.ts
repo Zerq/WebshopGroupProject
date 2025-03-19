@@ -60,7 +60,7 @@ export class Products {
     }
 
     public sortBy(sortCriteria:string, order: "asc"|"desc") {
-        return this.#append(`sortBy=${sortCriteria}&oirder=${order}`);
+        return this.#append(`sortBy=${sortCriteria}&order=${order}`);
     }
 
     public async fetch(): Promise<ProductResult>{
