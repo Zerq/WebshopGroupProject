@@ -1,17 +1,12 @@
 "use client";
 
-
-import { useEffect, useState, } from "react";
+import { useEffect, useState } from "react";
 import { ProductList } from "./components/product-cards/products";
 import { Products } from "./actions";
 import { ProductResult } from "./types";
 import PaginationNav from "./components/navigation/pagination-nav";
-
 import { useSearchParams } from "next/navigation";
 import OrderBy from "./components/order-by/orderby";
-
-
-
 
 export default function Home() {
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
@@ -48,14 +43,15 @@ export default function Home() {
   }, [limit, skip,orderBy,order]);
 
 
-  const limit2 = 25;
-  const pageCount = Math.round(state.total / limit2);
+  const totalLimit = 25;
+  const pageCount = Math.ceil(state.total / totalLimit);
+
   return (
     <div>
       <main>
         <OrderBy></OrderBy>
         <ProductList products={state.products ?? []} />
-        <PaginationNav path={"/products"} pagesCount={pageCount} limit={limit2}></PaginationNav>
+        <PaginationNav path={"/products"} pagesCount={pageCount} limit={totalLimit}></PaginationNav>
       </main>
     </div>
   );
