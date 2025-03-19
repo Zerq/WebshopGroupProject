@@ -53,3 +53,23 @@ export interface Product {
     images: string[], 
     thumbnail: string
 }
+
+export interface CartItem{
+    id: number,
+    title: string,
+    images: string[],
+    price: number,
+    description: string,
+    rating: number,
+    quantity: number
+}
+
+export interface CartContextType{
+    cartItems: CartItem[];
+    addToCart: (product: CartItem) => void;
+    incrementCartItem: (id: number) => void;
+    decrementCartItem: (id: number) => void;
+    removeCartItem: (id: number) => void;
+
+}
+

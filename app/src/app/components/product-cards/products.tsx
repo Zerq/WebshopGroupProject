@@ -1,8 +1,9 @@
 import Image from "next/image";
 import styles from "./cards.module.css";
-import { Product } from "../../types";
+import { CartItem } from "../../types";
+import { useCart } from "@/app/generalprovider";
 
-export function ProductList({ products }: { products: Product[] }) {
+export function ProductList({ products }: { products: CartItem[] }) {
     return (
         <ul className={styles.cards} role="list">
             {products.map(product =>
@@ -12,13 +13,9 @@ export function ProductList({ products }: { products: Product[] }) {
     )
 }
 
-interface cardProps {
-    product: Product
-}
-//Send props to the component
-//export function Card({ recipe }: { recipe: Recipe }) {
-export function Card(props: cardProps) {
-    const product = props.product
+export function Card({ product }: { product: CartItem }) {
+    // const product = props.product
+    const { addToCart } = useCart();
     return (
         <li className={styles.card}>
             <h2>{product.title}</h2>
@@ -40,8 +37,8 @@ export function Card(props: cardProps) {
                     <p className={styles.paraSmall}>{product.description}</p>
                 </div>
                 <div className={styles.btnsWrapper}>
-                    <button className={styles.btnSeeDetails}>Se detaljer</button>
-                    <button className={styles.btnBuy}>Köp</button>
+                    <button className={styles.btnSeeDetails} aria-label={`Se detaljer om ${product.title}`}>Se detaljer</button>
+                    <button className={styles.btnBuy} aria-label={`knapp för köp`} onClick={() => addToCart(product)}>Köp</button>
                 </div>
             </div>
         </li>

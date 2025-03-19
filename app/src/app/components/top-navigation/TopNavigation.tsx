@@ -6,13 +6,16 @@ import styles from './topNavigation.module.css';
 import Menu from './Menu';
 import Theme from './Theme'
 import SearchBar from './SearchBar';
-
-import {useState} from "react"
-import Image from 'next/image';
-
+import { useCart } from "../../generalprovider"
+import { useEffect } from 'react';
 
 
-export default function TopNavigation () {
+export default function TopNavigation() {
+    const { cartItems } = useCart();
+
+    useEffect(() => {
+        console.log("cartItems updated:", cartItems);
+    }, [cartItems]);
     return (  
         <nav className={styles.topNavigationContainer}>
             <div className={styles.siteLogo}>
@@ -47,8 +50,8 @@ export default function TopNavigation () {
                 <SearchBar/>
                 <Theme />
                 <div>
-                    <span className="cart-badge"></span>
                     <Link href="/cart">🛒</Link>
+                    { cartItems.reduce((total, item) => total + item.quantity, 0) }
                 </div>
             </div>
         </nav>

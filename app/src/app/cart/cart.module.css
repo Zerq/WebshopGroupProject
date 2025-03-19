@@ -1,0 +1,94 @@
+.cartHead {
+    font-size: 2rem;
+    font-weight: 500;
+    color:#333;
+    text-align: center;
+    padding: .5em 0 0 1em;
+}
+
+.emptyCart {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.cardCart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    border-bottom: 1px solid #3333333f;
+
+    .title {
+        text-align: left;
+        display: block;
+        width: 100%;
+        padding-left: 20px;
+    }
+
+    img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .s1 {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 1rem;
+            font-weight: 400;
+            width: fit-content;
+            color: #333;
+            border: 1px solid #3333333f;
+            padding: 5px 10px;
+            white-space: nowrap;
+        }
+
+        svg {
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+        }
+
+    }
+}
+
+
+.incredecre {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0px 20px;
+
+    button {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: none;
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #3333333f;
+    }
+
+    span {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #333;
+    }
+}

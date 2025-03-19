@@ -14,7 +14,7 @@ export default function Home() {
 
     const queryParameters = new URLSearchParams(window.location.search)
     const getIntParameter = (name: string, callback: (n: number) => Products) => {
-      if (queryParameters.has(name)) { //does this query string paramater exist?
+      if (queryParameters.has(name)) {
         const val = queryParameters.get(name);
 
         if (!val) throw new Error(name + " is null");  //dont allow null
@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <div>
       <main>
-        <ProductList products={state.products ?? []} />
+        <ProductList products={(state.products ?? []).map(product => ({ ...product, quantity: 1 }))} />
         <PaginationNav path={"/products"} pagesCount={pageCount} limit={limit}></PaginationNav>
       </main>
     </div>

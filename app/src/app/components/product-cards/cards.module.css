@@ -14,10 +14,12 @@
     align-items: center;
 
     .imageWrapper {
+      display:flex;
+      justify-content: center;
       .image {
-        width: 80%;
-        height: auto;
-        margin-bottom: 210px;
+        width: auto;
+        height: 160px;
+        margin: 10px 0 210px 0;
       }
     }
 
@@ -29,14 +31,15 @@
       position: absolute;
       bottom: 5px;
       width: 94%;
-      border: 1px solid beige;
+      /* border: 1px solid beige;
       border-radius: 5px;
-      box-shadow: 2px 2px rgb(146, 146, 131);
+      box-shadow: 2px 2px rgb(146, 146, 131); */
       padding: 6px;
 
       .btnsWrapper {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         width: 100%;
 
         .btnSeeDetails {
@@ -45,6 +48,7 @@
           border: 1px solid rgb(31, 22, 10);
           border-radius: 6px;
           height: 1.6rem;
+          width: 5rem;
           padding: 0.26rem;
           color: aliceblue;
           background-color: var(--bgColBtnDetails);
@@ -60,6 +64,7 @@
         .btnBuy {
           border: 1px solid rgb(31, 22, 10);
           border-radius: 6px;
+          width: 5rem;
           height: 1.6rem;
           padding: 0.26rem;
           margin-left: 2rem;
