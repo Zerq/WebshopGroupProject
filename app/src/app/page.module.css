@@ -1,3 +1,24 @@
+.ToolPanel{
+  display: flex;
+  padding: 0.5rem;
+  padding-bottom: 0;
+  padding-right: 0;
+  
+  div, form {
+    height: 2rem;
+    input {
+      height: 100%;
+    }
+    button {
+      height: 100%;
+      width: 2rem;
+      background-color: transparent;
+    }
+  }
+
+}
+
+
 .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
@@ -26,6 +47,9 @@
     --button-secondary-hover: #1a1a1a;
   }
 }
+
+
+
 
 .main {
   display: flex;

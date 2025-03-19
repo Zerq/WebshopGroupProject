@@ -43,8 +43,7 @@ export default function TopNavigation () {
                     <Link href="/">Newsletter</Link>
                     <Link href="/about">About</Link>
                     <Link href="/contact">Contact</Link>
-                </div>
-                <SearchBar/>
+                </div>           
                 <Theme/>
                 <Link href="/cart">🛒</Link>
             </div>
