@@ -61,22 +61,14 @@ export default function Home() {
   const totalLimit = 25;
   const pageCount = Math.ceil(state.total / totalLimit);
 
-  return !isDoneLoading ? <><div className={style.loadScreen}></div>
+  return !isDoneLoading ? <div className={style.loadScreen}></div> :
     <div>
-      <main>
+     <main>
         <div className={style.ToolPanel}>
           <FilterByCategory></FilterByCategory>
           <OrderBy></OrderBy>
           <SearchBar />
         </div>
-        <ProductList products={state.products ?? []} />
-        <PaginationNav path={"/products"} pagesCount={pageCount} limit={totalLimit}></PaginationNav>
-      </main>
-    </div>
-  </> :
-    <div>
-      <main>
-        <OrderBy></OrderBy>
         <ProductList products={state.products ?? []} />
         <PaginationNav path={"/products"} pagesCount={pageCount} limit={totalLimit}></PaginationNav>
       </main>
