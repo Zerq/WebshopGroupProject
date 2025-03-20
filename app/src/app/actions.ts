@@ -1,5 +1,11 @@
 import { ProductResult } from "./types";
 
+export const fetchProduct = async () => {
+    const res = await fetch(`https://dummyjson.com/products/1`)
+    const data = await res.json();
+    return data;
+}
+
 export const fetchProducts = async (limit = 25, skip = 0) => {
     const res = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
     const data = await res.json();
