@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { GeneralProvider } from "./generalprovider";
+import { CartProvider } from "./cartprovider";
 import TopNavigation from './components/top-navigation/TopNavigation'; 
 
 const geistSans = Geist({
@@ -26,12 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <GeneralProvider>
+      <CartProvider>
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <TopNavigation/>
         <main>{children}</main>
         </body>
-      </GeneralProvider>
+      </CartProvider>
     </html>
   );
 }

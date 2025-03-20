@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./cards.module.css";
 import { Product } from "../../types";
-import { useCart } from "@/app/generalprovider";
+import { useCart } from "@/app/cartprovider";
 
 export function ProductList({ products }: { products: Product[] }) {
     return (

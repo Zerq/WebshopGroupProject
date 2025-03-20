@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link'
 import { useState, useEffect} from 'react';
 import styles from './topNavigation.module.css';
-import { useCart } from '@/app/generalprovider';
+import { useCart } from '@/app/cartprovider';
 
 export default function Menu() {
     const [open, setOpen] = useState(false); // statevariable
@@ -31,6 +31,7 @@ export default function Menu() {
             />  {open && (
                   <div className={styles.dropdownMenu}>
                     <Link href="#" onClick={() => setOpen(false)}>Nyhetsbrev </Link>
+                    <Link href="/login" onClick={() => setOpen(false)}>Login</Link>
                     <Link href="./cart" onClick={() => setOpen(false)}>Varukorg 🛒
                         <span className={styles.cartCount}>
                             {cartItems.reduce((total, item) => total + item.quantity, 0)}

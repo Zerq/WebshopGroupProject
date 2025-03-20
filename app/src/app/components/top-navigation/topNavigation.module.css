@@ -71,6 +71,11 @@
         padding: 2rem 5rem
     }
 
+    .loginLink {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
     .cartCount {
         font-size: 1rem
     }
@@ -154,6 +159,11 @@
         font-size: 1.5rem;
         justify-content: flex-end;
         align-items: center;
+    }
+
+    .loginLink {
+        font-size: .9rem;
+        text-align: center;
     }
 
     .mobileViewContainer {
