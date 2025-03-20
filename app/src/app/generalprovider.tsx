@@ -1,19 +1,15 @@
 "use client";
 // import { AppModel, } from "./types";
 import { createContext, useContext, useState, ReactNode } from "react";
-import { CartContextType, CartItem } from "./types";
+import { CartContextType, CartItem, Product } from "./types";
 
-// interface GeneralContextInterface {
-//     state: AppModel;
 
-//     setState: (newState: AppModel)=> void;
-// }
 export const GeneralContext = createContext<CartContextType | null>(null);
 
 export function GeneralProvider({ children }: { children: ReactNode; }) {
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-    const addToCart = (product: CartItem) => {
+    const addToCart = (product: Product) => {
         setCartItems((prev) => {
             const existingIndex = prev.findIndex((item) => item.id === product.id);
             if (existingIndex !== -1) {

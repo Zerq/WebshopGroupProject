@@ -59,14 +59,12 @@ export interface CartItem{
     title: string,
     images: string[],
     price: number,
-    description: string,
-    rating: number,
     quantity: number
 }
 
 export interface CartContextType{
     cartItems: CartItem[];
-    addToCart: (product: CartItem) => void;
+    addToCart: (product: Product) => void;
     incrementCartItem: (id: number) => void;
     decrementCartItem: (id: number) => void;
     removeCartItem: (id: number) => void;

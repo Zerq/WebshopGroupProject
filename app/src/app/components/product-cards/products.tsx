@@ -1,9 +1,9 @@
 import Image from "next/image";
 import styles from "./cards.module.css";
-import { CartItem } from "../../types";
+import { Product } from "../../types";
 import { useCart } from "@/app/generalprovider";
 
-export function ProductList({ products }: { products: CartItem[] }) {
+export function ProductList({ products }: { products: Product[] }) {
     return (
         <ul className={styles.cards} role="list">
             {products.map(product =>
@@ -13,7 +13,7 @@ export function ProductList({ products }: { products: CartItem[] }) {
     )
 }
 
-export function Card({ product }: { product: CartItem }) {
+export function Card({ product }: { product: Product }) {
     // const product = props.product
     const { addToCart } = useCart();
     return (
