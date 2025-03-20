@@ -26,13 +26,12 @@ export default function Home() {
       return Number.parseInt(val);
     };
 
-    let query: Products;
-
-    if (filterBy === null) {
+    let query:Products;
+    
+    if (filterBy === null){
       query = Products.GetProducts();
     } else {
       query = Products.getProductsByCategory(filterBy);
-
     }
 
     if (orderBy !== null && (order === "asc" || order === "desc")) {

@@ -4,9 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link'
 import { useState, useEffect} from 'react';
 import styles from './topNavigation.module.css';
+import { useCart } from '@/app/generalprovider';
 
 export default function Menu() {
     const [open, setOpen] = useState(false); // statevariable
+    const { cartItems } = useCart();
 
     useEffect(() => {
         if (open) {
@@ -27,11 +29,13 @@ export default function Menu() {
                 className={styles.menuIcon}
                 onClick={() => setOpen((prev) => !prev)}
             />  {open && (
-                    <div className={styles.dropdownMenu}>
-                        <Link href="#">Newsletter</Link>
-                        <Link href="#">Contact</Link>
-                        <Link href="#">About</Link>
-                        <Link href="./cart">Cart</Link>
+                  <div className={styles.dropdownMenu}>
+                    <Link href="#" onClick={() => setOpen(false)}>Nyhetsbrev </Link>
+                    <Link href="./cart" onClick={() => setOpen(false)}>Varukorg 🛒
+                        <span className={styles.cartCount}>
+                            {cartItems.reduce((total, item) => total + item.quantity, 0)}
+                        </span>
+                    </Link>
                     </div>
                  )}
         </div>

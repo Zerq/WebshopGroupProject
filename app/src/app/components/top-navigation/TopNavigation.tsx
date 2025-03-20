@@ -1,55 +1,40 @@
-'use client'
-/* Runs on serverside expect components that runs client side*/
-
-
+'use client';
 import Link from 'next/link';
 import styles from './topNavigation.module.css';
 import Menu from './Menu';
-import Theme from './Theme'
-import SearchBar from './SearchBar';
+import { useCart } from "../../generalprovider"
 
 
+export default function TopNavigation() {
+    const { cartItems } = useCart();
 
-export default function TopNavigation () {
-    return (  
+    return (
         <nav className={styles.topNavigationContainer}>
-            
-        {/* MOBILE SCREENS  */}
-        <div className={styles.mobileViewContainer}>
-            <Link className={styles.siteLogo} href="/">webshoppen</Link> 
-            <Menu/>
-        </div>
 
-
-        {/* TABLET SCREENS  */}
-        <div className={styles.tabletViewContainer}> 
-            <div className={styles.tabletContainerUno}> 
-                <Link className={styles.siteLogo} href="/">webshoppen</Link> 
-            </div> 
-            <div className={styles.tabletContainerDos}>  
-                <SearchBar/>
-                <Theme/>
-                <Link href="/cart">🛒</Link>
-            </div>   
-        </div>
-
-         {/* DESKTOPSCREENS */}
-        <div className={styles.desktopViewContainer}> 
-            <div className={styles.logoWrapper}> 
-                <Link className={styles.siteLogo} href="/">webshoppen</Link> 
-            </div>  
-                <div className={styles.navLinksWrapper}>
-                    <Link href="#">Newsletter</Link>
-                    <Link href="#">About</Link>
-                    <Link href="#">Contact</Link>           
-                <div className={styles.navIconsWrapper}>
-            <Theme/>
-            <Link href="/cart">🛒</Link>
-
+            {/* MOBILE SCREENS  */}
+            <div className={styles.mobileViewContainer}>
+                <Link className={styles.siteLogo} href="/">webshoppen</Link>
+                <Menu />
             </div>
-        </div>
-        </div>
-    </nav>
+
+            {/* DESKTOPSCREENS */}
+
+            <div className={styles.desktopViewContainer}>
+                <div className={styles.logoWrapper}>
+                    <Link className={styles.siteLogo} href="/">webshoppen</Link>
+                </div>
+                <div className={styles.navLinksWrapper}>
+                    <Link href="#">Nyhetsbrev</Link>
+                    <div className={styles.navIconsWrapper}>
+                        <Link href="/cart">🛒
+                            <span className={styles.cartCount}>
+                                {cartItems.reduce((total, item) => total + item.quantity, 0)}
+                            </span>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </nav>
     )
 }
 
