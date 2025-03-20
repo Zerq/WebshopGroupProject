@@ -10,16 +10,15 @@ import OrderBy from "./components/order-by/orderby";
 import FilterByCategory from "./components/filter-by-category/filterByCategory";
 import SearchBar from "./components/top-navigation/SearchBar";
 import style from "./page.module.css";
-
 export default function Home() {
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
+  const [isDoneLoading, setIsDoneLoading] = useState(false);
   const params = useSearchParams();
   const limit = params.get("limit");
   const skip = params.get("skip");
   const orderBy = params.get("orderBy");
   const order = params.get("order");
   const filterBy = params.get("filterBy");
-
 
   useEffect(() => {
     const toInt = (val: unknown) => {
@@ -31,13 +30,12 @@ export default function Home() {
     
     if (filterBy === null){
       query = Products.GetProducts();
-    }else {
-      query = Products.getProductsByCategory( filterBy);
-
+    } else {
+      query = Products.getProductsByCategory(filterBy);
     }
-    
+
     if (orderBy !== null && (order === "asc" || order === "desc")) {
-      query = query.sortBy(orderBy, order);
+      query = query.sortBy(orderBy, order); setIsDoneLoading(true);
     }
 
     if (toInt(limit) !== null) {
@@ -48,18 +46,24 @@ export default function Home() {
       query = query.skip(toInt(skip)!);
     }
 
-    query.fetch().then(n => setState(n));
+    const timeout = setTimeout(() => { // only render loading screen if request tameks more then 200 miliseconds
+      setIsDoneLoading(false);
+    }, (200));
 
-
+    query.fetch().then(n => {
+      clearTimeout(timeout);
+      setState(n)
+      setIsDoneLoading(true);
+    });
   }, [limit, skip, orderBy, order, filterBy]);
 
 
   const totalLimit = 25;
   const pageCount = Math.ceil(state.total / totalLimit);
 
-  return (
+  return !isDoneLoading ? <div className={style.loadScreen}></div> :
     <div>
-      <main>
+     <main>
         <div className={style.ToolPanel}>
           <FilterByCategory></FilterByCategory>
           <OrderBy></OrderBy>
@@ -68,6 +72,5 @@ export default function Home() {
         <ProductList products={state.products ?? []} />
         <PaginationNav path={"/products"} pagesCount={pageCount} limit={totalLimit}></PaginationNav>
       </main>
-    </div>
-  );
+    </div>;
 }
