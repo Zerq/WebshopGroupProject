@@ -7,46 +7,54 @@ import { ProductResult } from "./types";
 import PaginationNav from "./components/navigation/pagination-nav";
 import { useSearchParams } from "next/navigation";
 import OrderBy from "./components/order-by/orderby";
+import style from "./page.module.css";
 
 export default function Home() {
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
+  const [isDoneLoading, setIsDoneLoading] = useState(false);
+
   const params = useSearchParams();
   const limit = params.get("limit");
   const skip = params.get("skip");
   const orderBy = params.get("orderBy");
   const order = params.get("order");
 
-
   useEffect(() => {
-    const toInt = (val: unknown) => {
-      if (typeof (val) !== "string") return null;
-      return Number.parseInt(val);
-    };
+      const toInt = (val: unknown) => {
+        if (typeof (val) !== "string") return null;
+        return Number.parseInt(val);
+      };
 
-    let query = Products.GetProducts();
+      let query = Products.GetProducts();
 
-    if (orderBy !== null && (order === "asc" || order === "desc")) {
-      query = query.sortBy(orderBy, order);
-    }
+      if (orderBy !== null && (order === "asc" || order === "desc")) {
+        query = query.sortBy(orderBy, order); setIsDoneLoading(true);
+      }
 
-    if (toInt(limit) !== null) {
-      query = query.limit(toInt(limit)!);
-    }
+      if (toInt(limit) !== null) {
+        query = query.limit(toInt(limit)!);
+      }
 
-    if (toInt(skip) !== null) {
-      query = query.skip(toInt(skip)!);
-    }
+      if (toInt(skip) !== null) {
+        query = query.skip(toInt(skip)!);
+      }
 
-    query.fetch().then(n => setState(n));
+      const timeout = setTimeout(() => { // only render loading screen if request tameks more then 200 miliseconds
+        setIsDoneLoading(false); 
+      }, (200));
 
-
-  }, [limit, skip,orderBy,order]);
+      query.fetch().then(n => {
+        clearTimeout(timeout); 
+        setState(n)
+        setIsDoneLoading(true);
+      });
+    }, [limit, skip, orderBy, order]);
 
 
   const totalLimit = 25;
   const pageCount = Math.ceil(state.total / totalLimit);
 
-  return (
+  return !isDoneLoading ? <><div className={style.loadScreen}></div>
     <div>
       <main>
         <OrderBy></OrderBy>
@@ -54,5 +62,12 @@ export default function Home() {
         <PaginationNav path={"/products"} pagesCount={pageCount} limit={totalLimit}></PaginationNav>
       </main>
     </div>
-  );
+  </> :
+    <div>
+      <main>
+        <OrderBy></OrderBy>
+        <ProductList products={state.products ?? []} />
+        <PaginationNav path={"/products"} pagesCount={pageCount} limit={totalLimit}></PaginationNav>
+      </main>
+    </div>;
 }

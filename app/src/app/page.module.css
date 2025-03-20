@@ -16,6 +16,17 @@
   font-family: var(--font-geist-sans);
 }
 
+.loadScreen {
+  position: absolute;
+  width: 100vw;
+  height: calc(100vh - 2rem);
+  
+  background-image: url("/tube-spinnerdark.svg");
+  background-repeat: no-repeat;
+  background-position:calc(50vw - 6rem);
+  background-size: 12rem;
+}
+
 @media (prefers-color-scheme: dark) {
   .page {
     --gray-rgb: 255, 255, 255;
