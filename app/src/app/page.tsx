@@ -21,43 +21,42 @@ export default function Home() {
   const filterBy = params.get("filterBy");
 
   useEffect(() => {
-      const toInt = (val: unknown) => {
-        if (typeof (val) !== "string") return null;
-        return Number.parseInt(val);
-      };
+    const toInt = (val: unknown) => {
+      if (typeof (val) !== "string") return null;
+      return Number.parseInt(val);
+    };
 
-    let query:Products;
-    
-    if (filterBy === null){
+    let query: Products;
+
+    if (filterBy === null) {
       query = Products.GetProducts();
-    }else {
-      query = Products.getProductsByCategory( filterBy);
+    } else {
+      query = Products.getProductsByCategory(filterBy);
 
     }
-    
-      if (orderBy !== null && (order === "asc" || order === "desc")) {
-        query = query.sortBy(orderBy, order); setIsDoneLoading(true);
-      }
 
-      if (toInt(limit) !== null) {
-        query = query.limit(toInt(limit)!);
-      }
+    if (orderBy !== null && (order === "asc" || order === "desc")) {
+      query = query.sortBy(orderBy, order); setIsDoneLoading(true);
+    }
 
-      if (toInt(skip) !== null) {
-        query = query.skip(toInt(skip)!);
-      }
+    if (toInt(limit) !== null) {
+      query = query.limit(toInt(limit)!);
+    }
 
-      const timeout = setTimeout(() => { // only render loading screen if request tameks more then 200 miliseconds
-        setIsDoneLoading(false); 
-      }, (200));
+    if (toInt(skip) !== null) {
+      query = query.skip(toInt(skip)!);
+    }
 
+    const timeout = setTimeout(() => { // only render loading screen if request tameks more then 200 miliseconds
+      setIsDoneLoading(false);
+    }, (200));
 
-      query.fetch().then(n => {
-        clearTimeout(timeout); 
-        setState(n)
-        setIsDoneLoading(true);
-      });
-    }, [limit, skip, orderBy, order, filterBy]);
+    query.fetch().then(n => {
+      clearTimeout(timeout);
+      setState(n)
+      setIsDoneLoading(true);
+    });
+  }, [limit, skip, orderBy, order, filterBy]);
 
 
   const totalLimit = 25;
