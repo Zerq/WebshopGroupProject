@@ -27,8 +27,6 @@ export default function Home() {
       return Number.parseInt(val);
     };
 
-
-
     let query:Products;
     
     if (filterBy === null){
@@ -38,8 +36,6 @@ export default function Home() {
 
     }
     
-
-
     if (orderBy !== null && (order === "asc" || order === "desc")) {
       query = query.sortBy(orderBy, order);
     }
