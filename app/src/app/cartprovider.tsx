@@ -4,9 +4,9 @@ import { createContext, useContext, useState, ReactNode } from "react";
 import { CartContextType, CartItem, Product } from "./types";
 
 
-export const GeneralContext = createContext<CartContextType | null>(null);
+export const CartContext = createContext<CartContextType | null>(null);
 
-export function GeneralProvider({ children }: { children: ReactNode; }) {
+export function CartProvider({ children }: { children: ReactNode; }) {
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
     const addToCart = (product: Product) => {
@@ -43,14 +43,14 @@ export function GeneralProvider({ children }: { children: ReactNode; }) {
     };
 
     return (
-        <GeneralContext.Provider value={{ cartItems, addToCart, incrementCartItem, decrementCartItem, removeCartItem }}>
+        <CartContext.Provider value={{ cartItems, addToCart, incrementCartItem, decrementCartItem, removeCartItem }}>
             {children}
-        </GeneralContext.Provider>
+        </CartContext.Provider>
     );
 }
 
 export function useCart() {
-    const context = useContext(GeneralContext);
+    const context = useContext(CartContext);
     if (!context) {
         throw new Error("useCart must be used within a CartProvider")
     }

@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import styles from './topNavigation.module.css';
 import Menu from './Menu';
-import { useCart } from "../../generalprovider"
+import { useCart } from "../../cartprovider"
 
 
 export default function TopNavigation() {
@@ -26,6 +26,7 @@ export default function TopNavigation() {
                 <div className={styles.navLinksWrapper}>
                     <Link href="#">Nyhetsbrev</Link>
                     <div className={styles.navIconsWrapper}>
+                        <Link href="/login" className={styles.loginLink}>Login</Link>
                         <Link href="/cart">🛒
                             <span className={styles.cartCount}>
                                 {cartItems.reduce((total, item) => total + item.quantity, 0)}

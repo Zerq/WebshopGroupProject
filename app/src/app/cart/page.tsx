@@ -2,7 +2,7 @@
 import { CartItem } from "../types";
 import styles from './cart.module.css';
 import Image from 'next/image';
-import { useCart } from "../generalprovider";
+import { useCart } from "../cartprovider";
 
 export default function CartPage() {
     const { cartItems, incrementCartItem, decrementCartItem, removeCartItem } = useCart();
