@@ -41,11 +41,11 @@ export default function TopNavigation () {
                 <div className={styles.navLinksWrapper}>
                     <Link href="#">Newsletter</Link>
                     <Link href="#">About</Link>
-                    <Link href="#">Contact</Link>
-                <SearchBar/>
+                    <Link href="#">Contact</Link>           
                 <div className={styles.navIconsWrapper}>
             <Theme/>
             <Link href="/cart">🛒</Link>
+
             </div>
         </div>
         </div>
