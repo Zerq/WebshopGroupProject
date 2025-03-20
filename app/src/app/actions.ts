@@ -6,6 +6,13 @@ export const fetchProducts = async (limit = 25, skip = 0) => {
     return data.products;
 }
 
+export const FetchCategories = async () => {
+    const res = await fetch('https://dummyjson.com/products/category-list');
+    const data = await res.json();
+    return data as string[];
+};
+
+
 /**
  * this is a basic factory pattern
  */
@@ -18,24 +25,24 @@ export class Products {
 
 
     //static  method this you can call via Products.GetProducts()
-    public static GetProducts(){  
-        const inst= new Products();
+    public static GetProducts() {
+        const inst = new Products();
         inst.#url = "https://dummyjson.com/products?";
         return inst;
     }
 
 
     //static  method this you can call via Products.byCategory(some category goes here)
-    public static getProductsByCategory(category:string){
+    public static getProductsByCategory(category: string) {
         const inst = new Products();
-        inst.#url = "https://dummyjson.com/products/category?" + category;
+        inst.#url = `https://dummyjson.com/products/category/${category}?`;
         return inst;
     }
 
     //this is private and thus not visible outside
     #append(str: string) {
         const newFetch = new Products();
-         newFetch.#url = this.#url; 
+        newFetch.#url = this.#url;
 
         if (this.#url.endsWith("?")) {
             newFetch.#url += str;
@@ -59,11 +66,11 @@ export class Products {
         return this.#append("select=" + properties.join(","));
     }
 
-    public sortBy(sortCriteria:string, order: "asc"|"desc") {
-        return this.#append(`sortBy=${sortCriteria}&oirder=${order}`);
+    public sortBy(sortCriteria: string, order: "asc" | "desc") {
+        return this.#append(`sortBy=${sortCriteria}&order=${order}`);
     }
 
-    public async fetch(): Promise<ProductResult>{
+    public async fetch(): Promise<ProductResult> {
         const res = await fetch(this.#url)
         const data = await res.json();
         return data;

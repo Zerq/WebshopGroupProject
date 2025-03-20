@@ -1,59 +1,37 @@
 'use client';
-
 import Link from 'next/link';
 import styles from './topNavigation.module.css';
-
 import Menu from './Menu';
-import Theme from './Theme'
-import SearchBar from './SearchBar';
 import { useCart } from "../../generalprovider"
-import { useEffect } from 'react';
 
 
 export default function TopNavigation() {
     const { cartItems } = useCart();
 
-    useEffect(() => {
-        console.log("cartItems updated:", cartItems);
-    }, [cartItems]);
     return (
         <nav className={styles.topNavigationContainer}>
-            <div className={styles.siteLogo}>
-                <Link href="/">WEBSHOPPEN</Link>
-            </div>
-
 
             {/* MOBILE SCREENS  */}
-            <div className={styles.mobileView}>
-                <div>
-                    <Theme />
-                    <Menu />
-                </div>
-            </div>
-
-
-            {/* LAPTOP SCREENS  */}
-            <div className={styles.tabletView}>
-                <div>
-                    <SearchBar />
-                    <Theme />
-                </div>
+            <div className={styles.mobileViewContainer}>
+                <Link className={styles.siteLogo} href="/">webshoppen</Link>
+                <Menu />
             </div>
 
             {/* DESKTOPSCREENS */}
-            <div className={styles.desktopView}>
-                <div className={styles.navLinks}>
-                    <Link href="/">Newsletter</Link>
-                    <Link href="/about">About</Link>
-                    <Link href="/contact">Contact</Link>
+
+            <div className={styles.desktopViewContainer}>
+                <div className={styles.logoWrapper}>
+                    <Link className={styles.siteLogo} href="/">webshoppen</Link>
                 </div>
-                <SearchBar />
-                <Theme />
-                <div className={styles.shoppingcart}>
-                    <Link href="/cart">🛒</Link>
-                    <span className={styles.cartCount}>
-                        {cartItems.reduce((total, item) => total + item.quantity, 0)}
-                    </span>
+                <div className={styles.navLinksWrapper}>
+                    <Link href="#">Nyhetsbrev</Link>
+                    <div className={styles.navIconsWrapper}>
+                        <Link href="/cart">🛒
+                            <span className={styles.cartCount}>
+                                {cartItems.reduce((total, item) => total + item.quantity, 0)}
+                            </span>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -90,7 +68,6 @@ export default function TopNavigation() {
 }
 
 */}
-
 
 
 
