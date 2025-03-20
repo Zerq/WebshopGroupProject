@@ -20,25 +20,26 @@ export default function Menu() {
 
 
     return (
-        <div className={styles.menuContainer}>
-        <Image 
-            src='/menu.svg'      
+        <>
+            <Link className={styles.siteLogo} href="/" onClick={() => setOpen(false)}>webshoppen
+            </Link><div className={styles.menuContainer}>
+            <Image
+                src='/menu.svg'
                 alt=""
-                width={36} 
+                width={36}
                 height={36}
                 className={styles.menuIcon}
-                onClick={() => setOpen((prev) => !prev)}
-            />  {open && (
-                  <div className={styles.dropdownMenu}>
-                    <Link href="#" onClick={() => setOpen(false)}>Nyhetsbrev </Link>
-                    <Link href="/login" onClick={() => setOpen(false)}>Login</Link>
-                    <Link href="./cart" onClick={() => setOpen(false)}>Varukorg 🛒
-                        <span className={styles.cartCount}>
-                            {cartItems.reduce((total, item) => total + item.quantity, 0)}
-                        </span>
-                    </Link>
+                onClick={() => setOpen((prev) => !prev)} />  {open && (
+                    <div className={styles.dropdownMenu}>
+                        <Link href="#" onClick={() => setOpen(false)}>Nyhetsbrev </Link>
+                        <Link href="/login" onClick={() => setOpen(false)}>Login</Link>
+                        <Link href="./cart" onClick={() => setOpen(false)}>Varukorg 🛒
+                            <span className={styles.cartCount}>
+                                {cartItems.reduce((total, item) => total + item.quantity, 0)}
+                            </span>
+                        </Link>
                     </div>
-                 )}
-        </div>
+                )}
+        </div></>
     )
 };
