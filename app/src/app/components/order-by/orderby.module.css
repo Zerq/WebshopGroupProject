@@ -1,0 +1,19 @@
+div.OrderBy {
+    display: flex;
+}
+
+.buttonWrapper {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 0.3rem;
+}
+.labelSelector {
+    align-content: center;
+    padding-inline: 0.3rem;
+}
+
+.orderButtons {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}

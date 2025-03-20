@@ -1,54 +1,254 @@
-/* Note to self: Prolly update with hook to detect viewport here, (look also the other method noted cant remember now. But hiding is fine as done and easier so will do it if time, also ask group*/
-
 /*---------------------------------------
 1. GENERAL STYLES
 ---------------------------------------*/
 
 .topNavigationContainer {
+    background-color: rgb(14, 14, 14);
+    color: rgb(240, 239, 239); 
+    padding: 16px;
+    height:75px;
+
+    
+
+}
+
+
+
+/*---------------------------------------
+2. MOBILE DEFUALT <760px
+---------------------------------------*/
+
+
+
+.mobileViewContainer {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
     display: flex;
-    position: relative; 
-    align-items: center;
     justify-content: space-between;
-    background-color: #333;
-    color: white;
-    z-index: 100; 
+    align-items: center;
+    z-index: 1000;
+
+   
+}
+    .siteLogo {
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15rem;
+        
+      }
+
+    .dropdownMenu {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6rem;
+        font-size: 1.75rem;
+        
+        position:fixed;
+        left:0px;
+        top:60px;
+        width: 100%;
+        height: 100vh;/* To leave space for the navbar*/;
+        background-color: rgb(207, 63, 63); 
+        overflow: auto;
+        z-index:50;
+    }
+
+    .tabletViewContainer, .desktopViewContainer {
+        display: none;
+    }
+
+
+
+
+/*---------------------------------------
+3. Tablet View - 760-940 - NOT ACTIVE PART OF CSS ATM IF NEEDED (WILL REMOVE BUT NOW IN FOR TIME BEING)
+---------------------------------------*/
+
+@media (min-width: 760px) {
+    .tabletViewContainer {
+        background:blue;
+
+        width: 100%;
+        height: 75px;
+        padding: 0 16px;
+
+        display:flex;
+        align-items: center;
+        height: 100%;
+        /* rest of styling for tabletView - this is ok?*/
+    }
+ 
+
+    .searchContainer {
+        background: red;
+
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        padding: .5rem 1rem;
+        border: 100px dottet rgb(128, 0, 79);
+        
+    }
+
+    .searchInput{
+        height: 100%;
+        width: 100%;
+        border-radius: 50px;
+    }
+
+    .tabletContainerUno {
+        display:flex;
+        width: 50%;
+        gap: 2rem;
+        background: yellow;
+        
+        /* rest of styling for tabletView - this is ok?*/
+    }
+
+    .tabletContainerDos {
+        display:flex;
+        width:50%;
+        gap:1rem;
+        justify-content: flex-end;
+        width: 50%;
+        background: grey;
+        /* rest of styling for tabletView - this is ok?*/
+    }
+
+
+    .mobileViewContainer, .desktopViewContainer {
+        display: none;
+    }
 }
 
-.siteLogo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
 
 
 
+/*---------------------------------------
+4. Desktop View - >940px
+---------------------------------------*/
+
+
+@media (min-width: 760px) {
+    .desktopViewContainer {
+        gap:70px;
+    
+        display:flex;
+        align-items:center;
+        justify-content: space-between;
+        
+        width: 100%;
+        height: 75px;
+        padding: 0 16px;
+    }
 
 
 
+        .siteLogo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;        
+            }
 
-.topNavigationContainer{
-    color:white;
+        .navLinksWrapper {
+            display: flex;
+            flex:1;
+            justify-content: center;  
+            gap: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .searchBarOuterWrapper{
+            width: 100%;
+            display:flex;
+            justify-content: center;
+
+        }
+
+        .searchBarInnerWrapper{
+            display:flex;
+            position:relative;
+            align-items: center;
+            width: 70%;
+            height: 2.25rem;
+        }
+
+        .searchInput{
+            flex: 1;
+            outline:none;
+            color:black;
+            text-align: center;
+            font-size:0.75rem;
+        }
+
+        .searchButton{
+            position:absolute;
+            padding-left: 1rem;
+            border: none;
+            cursor: pointer;
+            size: 0.75rem;
+            background:none;
+        }
+
+        .navIconsWrapper{
+            display:flex;
+            flex:1;
+            gap:1.5rem;
+            
+            width:40%;
+            font-size:1.5rem;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+
+
+    .mobileViewContainer, .tabletViewContainer {
+        display: none;
+    }
+
+
 }
 
 
-/* Media Query Setup*/
+
+
+
+
+
+
+
+
+
+
+
+/* Media Query Setup
 @media (max-width: 759px){
 .mobileView { display: flex; }
 .tabletView { display: none; }
 .desktopView { display: none; }
 }
 
-/* Tablet */
+Tablet 
 @media (min-width: 760px) and (max-width: 959px) {
   .mobileView { display: none; }
   .tabletView { display: flex; }
   .desktopView { display: none; }
 }
 
-/* Desktop */
+Desktop
 @media (min-width: 960px) {
-  .mobileView { display: none; }
-  .tabletView { display: none; }
-  .desktopView { display: flex; }
+  .mobileView {display: none; }
+  .tabletView {display: none; }
+  .desktopView {display: flex; }
 }
 
 
@@ -126,15 +326,7 @@
         width: 36px;
         height: 36px;
 
-        .dropdownMenu {
-            position:fixed;
-            left:0;
-            top:60px;
-            width: 100%;
-            height: calc(100vh - 60px);
-            color: white;
-            background-color: rgba(0, 0, 0, 1); 
-            overflow: hidden; 
+        
             
 
 
