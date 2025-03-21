@@ -1,3 +1,24 @@
+.ToolPanel{
+  display: flex;
+  padding: 0.5rem;
+  padding-bottom: 0;
+  padding-right: 0;
+  
+  div, form {
+    height: 2rem;
+    input {
+      height: 100%;
+    }
+    button {
+      height: 100%;
+      width: 2rem;
+      background-color: transparent;
+    }
+  }
+
+}
+
+
 .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
@@ -16,7 +37,22 @@
   font-family: var(--font-geist-sans);
 }
 
+.loadScreen {
+  position: absolute;
+  width: 100vw;
+  height: calc(100vh - 2rem);
+  
+  background-image: url("/tube-spinnerdark.svg");
+  background-repeat: no-repeat;
+  background-position:calc(50vw - 6rem);
+  background-size: 12rem;
+}
+
 @media (prefers-color-scheme: dark) {
+  .loadScreen{
+    background-image: url("/tube-spinner.svg");
+  }
+  
   .page {
     --gray-rgb: 255, 255, 255;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
@@ -26,6 +62,9 @@
     --button-secondary-hover: #1a1a1a;
   }
 }
+
+
+
 
 .main {
   display: flex;
