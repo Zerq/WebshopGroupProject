@@ -22,10 +22,10 @@ export function Card({ product }: { product: Product }) {
 
   return (
     <li className={styles.card} aria-label={`Länk till ${product.title}`}>
-          <a onClick={(e) => {
-              e.stopPropagation();
-              router.push(`/product/${product.id}`);
-          }} className={styles.cardLink}>
+      <a onClick={(e) => {
+        e.stopPropagation();
+        router.push(`/product/${product.id}`);
+      }} className={styles.cardLink}>
 
         <h2>{product.title}</h2>
         <div className={styles.imageWrapper}>
@@ -50,17 +50,19 @@ export function Card({ product }: { product: Product }) {
             <p className={styles.paraSmall}>{product.description}</p>
           </div>
           {/* <button className={styles.btnSeeDetails} aria-label={`Se detaljer om ${product.title}`}>Se detaljer</button> */}
-          <button
-            className={styles.btnBuy}
-            aria-label={`knapp för köp`}
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              addToCart(product);
-            }}
-          >
-            Lägg i varukorg
-          </button>
+          <div className={styles.btnWrapper}>
+            <button
+              className={styles.btnBuy}
+              aria-label={`knapp för köp`}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                addToCart(product);
+              }}
+            >
+              Lägg i varukorg
+            </button>
+          </div>
         </div>
       </a>
     </li>
