@@ -74,9 +74,17 @@
              }
          }
 
-         svg {
-             width: clamp(20px, 2vw, 25px);
-             height: clamp(20px, 2vw, 25px);
+        .wasteBaskeBtn{
+            margin-top: 3px;
+             border: none;
+             background-color: transparent;
+             cursor: pointer;
+
+         }
+
+         .wasteBasket {
+             width: clamp(28px, 2vw, 42px);
+             height: clamp(28px, 2vw, 42px);
              cursor: pointer;
          }
      }

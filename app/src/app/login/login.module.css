@@ -1,9 +1,13 @@
 :root {
     --background: #fff;
+    --lightTextColor: #fff;
     --titelColor: #333;
     --labelColor: #555;
     --borderColor: gray;
     --bgSubmit: #555;
+    --bgSubmitHover: gray;
+    --msgSuccess: #28a745;
+    --bgError: hsl(354, 79%, 73%);
 }
 
 .formContainer {
@@ -18,7 +22,7 @@
 .title {
     text-align: center;
     font-size: 1.5rem;
-    color: var(--titelColor); 
+    color: var(--titelColor);
     margin-bottom: 1rem;
 }
 
@@ -26,14 +30,16 @@
     margin-bottom: 1rem;
 }
 
-.passWordLabel, .userNameLabel {
+.passWordLabel,
+.userNameLabel {
     display: block;
-    font-size: 1.2rem;
+    font-size: .8rem;
     color: var(--labelColor);
     margin: 1rem 0 0.25rem 0;
 }
 
-.userNameInput, .passWordInput {
+.userNameInput,
+.passWordInput {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid var(--borderColor);
@@ -41,7 +47,8 @@
     font-size: 1rem;
 }
 
-.userNameInput:focus, .passWordInput:focus {
+.userNameInput:focus,
+.passWordInput:focus {
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
@@ -51,7 +58,7 @@
     width: 100%;
     padding: 0.75rem;
     background: var(--bgSubmit);
-    color: white;
+    color: var(--lightTextColor);
     font-size: 1rem;
     border: none;
     border-radius: 4px;
@@ -60,5 +67,41 @@
 }
 
 .submitButton:hover {
-    background: #0056b3;
+    background: var(--bgSubmitHover);
+}
+
+.successContainer {
+    max-width: 350px;
+    height: 30px;
+    margin: 1rem auto;
+    padding: 1.5rem 1rem;
+    text-align: left;
+    background: var(--msgSuccess);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.errorContainer {
+    max-width: 350px;
+    height: 30px;
+    margin: 1rem auto;
+    padding: 1.5rem 1rem;
+    text-align: left;
+    background: var(--bgError);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+}
+
+.errorText {
+    color: red;
+    font-size: 1rem;
+    font-weight: 500;
 }

@@ -6,21 +6,32 @@ import { Authentication } from "../actions";
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [statusMessage, setStatusMessage] = useState("");
+    const [statusColor, setStatusColor] = useState("lightred");
     const [errors, setErrors] = useState<{ username?: string; password?: string }>({});
+    const [statusType, setStatusType] = useState<string | null>(null);
 
-    async function submitForm(event: { preventDefault: () => void; }) {
+    async function submitForm(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault(); // Förhindra sidladdning
         const newErrors: { username?: string; password?: string } = {};
-        if (!username) newErrors.username = "Användarnamn är obligatoriskt.";
-        if (!password) newErrors.password = "Lösenord är obligatoriskt.";
+
+        if (!username) newErrors.username = "Ange användarnamn.";
+        if (!password) newErrors.password = "Ange lösenord.";
 
         setErrors(newErrors);
+        if (Object.keys(newErrors).length > 0) return;
 
         try {
-            await Authentication.Login(username, password);
-            console.log("Login attempt successful!");
+            const data = await Authentication.Login(username, password);
+            setStatusMessage(`✅ Inloggningen lyckades för ${data.firstName}!`);
+            setStatusColor("white");
+            setStatusType("success");
         } catch (error) {
-            console.error("Login failed", error);
+            console.error("Login failed:", error);
+            setErrors({ username: "Användarnamn eller lösenord är felaktigt." });
+            setStatusType("error");
+            setStatusMessage("❌ Inloggningen misslyckades! Kontrollera användarnamn och lösenord.");
+            setStatusColor("black");
         }
     }
 
@@ -42,8 +53,8 @@ export default function Login() {
                             aria-describedby={errors.username ? "username-error" : undefined}
                             aria-invalid={errors.username ? "true" : "false"}
                         />
-                            {errors.username && <span id="username-error" className={styles.errorText}>{errors.username}</span>}
-                        </div>
+                        {errors.username && <span className={styles.errorText}>{errors.username}</span>}
+                    </div>
                     <div className={styles.inputGroup}>
                         <label htmlFor="password" className={styles.passWordLabel}>Lösenord:</label>
                         <input
@@ -57,12 +68,18 @@ export default function Login() {
                             aria-describedby={errors.password ? "password-error" : undefined}
                             aria-invalid={errors.password ? "true" : "false"}
                         />
+                        {errors.password && <span className={styles.errorText}>{errors.password}</span>}
                     </div>
-
                     <button type="submit" className={styles.submitButton}>Submit</button>
                 </form>
+                <div className={styles.successContainer} style={{ display: statusType === "success" ? "flex" : "none" }}>
+                    <p className={styles.status} style={{ color: statusColor }}>{statusMessage}</p>
+                </div>
+                <div className={styles.errorContainer} style={{ display: statusType === "error" ? "flex" : "none" }}>
+                    <p className={styles.status} style={{ color: statusColor }}>{statusMessage}</p>
+                </div>
             </fieldset>
         </>
-    )
+    );
 }
 

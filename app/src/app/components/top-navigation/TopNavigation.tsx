@@ -23,7 +23,7 @@ export default function TopNavigation() {
                     <Link className={styles.siteLogo} href="/">webshoppen</Link>
                 </div>
                 <div className={styles.navLinksWrapper}>
-                    <Link href="#">Nyhetsbrev</Link>
+                    <Link className={styles.pageLink} href="#">Nyhetsbrev</Link>
                     <div className={styles.navIconsWrapper}>
                         <Link href="/login" className={styles.loginLink}>Login</Link>
                         <Link href="/cart">🛒

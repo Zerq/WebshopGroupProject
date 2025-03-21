@@ -98,6 +98,7 @@ export class Authentication {
 
     public static async Login(username: string, password: string) {
         try {
+            console.log(username, password);
             const res = await fetch('https://dummyjson.com/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
