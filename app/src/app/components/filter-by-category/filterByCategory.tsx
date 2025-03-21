@@ -25,7 +25,9 @@ export default function FilterByCategory() {
         else {
             params.set("filterBy", e.currentTarget.value);
         }
-
+        params.delete("limit");
+        params.delete("skip");
+        
         UpdateUrl(params);
     };
 
@@ -36,7 +38,7 @@ export default function FilterByCategory() {
     };
 
     return <div className={styles.OrderBy}>
-        <label className={styles.labelSelector} htmlFor="FilterBySelect">FilterBy</label>
+        <label className={styles.labelSelector} htmlFor="FilterBySelect">Categori</label>
         <select onChange={select} defaultValue={params.get("orderBy") ?? "none"} id="FilterBySelect" name="FilterBySelect">
             <option value="none" >None</option>
            
