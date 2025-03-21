@@ -36,13 +36,13 @@
       box-shadow: 2px 2px rgb(146, 146, 131); */
       padding: 6px;
 
-      .btnsWrapper {
+      .btnWrapper {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
 
-        .btnSeeDetails {
+        /* .btnSeeDetails {
           width: fit-content;
           white-space: nowrap;
           border: 1px solid rgb(31, 22, 10);
@@ -52,22 +52,21 @@
           padding: 0.26rem;
           color: aliceblue;
           background-color: var(--bgColBtnDetails);
-          outline-offset: 0.3rem; /* accessibility issue */
-        }
-
-        .btnSeeDetails:hover {
-          background: #e1e1e1;
-          border: 1px solid var(--bgColBtnDetails);
-          color: var(--bgColBtnDetails);
-        }
-
+          outline-offset: 0.3rem;  accessibility issue 
+          }
+          .btnSeeDetails:hover {
+            background: #e1e1e1;
+            border: 1px solid var(--bgColBtnDetails);
+            color: var(--bgColBtnDetails);
+          } 
+          */
+          
         .btnBuy {
           border: 1px solid rgb(31, 22, 10);
           border-radius: 6px;
-          width: 5rem;
-          height: 1.6rem;
+          width: 98%; 
+          height: 2rem;
           padding: 0.26rem;
-          margin-left: 2rem;
           color: aliceblue;
           background-color: var(--bgColBtnBuy);
           outline-offset: 0.3rem; /* accessibility issue */

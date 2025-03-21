@@ -10,6 +10,8 @@ import OrderBy from "./components/order-by/orderby";
 import FilterByCategory from "./components/filter-by-category/filterByCategory";
 import SearchBar from "./components/top-navigation/SearchBar";
 import style from "./page.module.css";
+
+
 export default function Home() {
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
   const [isDoneLoading, setIsDoneLoading] = useState(false);

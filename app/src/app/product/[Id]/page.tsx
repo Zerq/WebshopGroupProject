@@ -1,33 +1,15 @@
-"use client"
+import { fetchProduct } from "@/app/actions";
+import ProductDetails from "@/app/components/product-details/ProductDetails";
+import { Product} from "@/app/types";
 
-import { fetchProducts, Products } from "@/app/actions";
-import { ProductResult } from "@/app/types";
-import { useEffect, useState } from "react";
+export default async function ProductDetail({params,
+}: {
+        params: { Id: string } | Promise<{ Id: string }>;
+}) {
+    const { Id } = await params;
 
-
-export default function ProductDetail() {
-    const [product, setProduct] = useState({ products: [], total: 0 } as ProductResult);
-    const [error, setError] = useState<string | null>(null);
-
-    // useEffect(() => {
-    //     console.log("Fetching products data...");
-    //     const loadData = async () => {
-    //         try {
-    //             const data = Products.GetProducts();
-    //             setProduct(data);
-    //         }
-    //         catch (err) {
-    //             setError("Kunde inte ladda produkterna. Försök igen senare");
-    //             console.error("Fetch error:", err);
-    //         }
-    //     };
-    //         loadData();
-
-    //     }, []);
-
+    const data: Product | undefined = await fetchProduct(Id);
     return (
-        <div>
-            <h2>Produktdetaljer för ...</h2>
-        </div>
+        data ? <ProductDetails product={data} /> : <div>Product not found</div>
     )
 }
