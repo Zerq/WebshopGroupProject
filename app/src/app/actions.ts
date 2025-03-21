@@ -70,6 +70,11 @@ export class Products {
         return this.#append(`sortBy=${sortCriteria}&order=${order}`);
     }
 
+    public search(query: string) {
+        return this.#append(`search=${encodeURIComponent(query)}`); // in need encoding since user free text search , do not break uri string.  
+    }
+
+
     public async fetch(): Promise<ProductResult> {
         const res = await fetch(this.#url)
         const data = await res.json();
