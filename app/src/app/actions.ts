@@ -1,7 +1,7 @@
 import { ProductResult } from "./types";
 
-export const fetchProduct = async () => {
-    const res = await fetch(`https://dummyjson.com/products/1`)
+export const fetchProduct = async (id: string) => {
+    const res = await fetch(`https://dummyjson.com/products/${id}`);
     const data = await res.json();
     return data;
 }
