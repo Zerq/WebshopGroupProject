@@ -1,10 +1,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --cardColor: rgb(243, 234, 226);
+  --cardColor: wheat;
   --cardBorderColor:gray;
   --bgColBtnDetails: rgb(105, 74, 33);
-  --bgColBtnBuy: rgb(172, 86, 15);
+  --bgColBtnBuy: rgb(58, 20, 63);
+
 }
 
 @media (prefers-color-scheme: dark) {
