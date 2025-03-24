@@ -97,17 +97,68 @@ export class Products {
     }
 
 }
-const testUser = {
-    username: "emilys",
-    password: "emilypass"
-}
-
-export class Login z.object({
-    username: z.string(), ({ message: "Fel användarnamn"}).trim(),
-    password: z.string().min(6, { message: "Lösenordet måste vara 6 bokstäver långt" }),
 
 
- 
+export class Authentication {
 
+    public static async createUser(firstName: string, lastName: string, age: number, email: string) {
+        fetch('https://dummyjson.com/users/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                firstName: firstName,
+                lastName: lastName,
+                age: age,
+                email: email
+            })
+        })
+            .then(res => res.json())
+            .then(console.log);
+    }
 
+    public static async Login(username: string, password: string) {
+        try {
+            console.log(username, password);
+            const res = await fetch('https://dummyjson.com/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    expiresInMins: 30,
+                }),
+                // credentials: 'include'
+            });
+
+            if (!res.ok) {
+                throw new Error(`Login failed: ${res.status} ${res.statusText}`);
+            }
+
+            const data = await res.json();
+            console.log('Login successful:', data);
+
+            // Spara token i localStorage
+            localStorage.setItem('accessToken', data.token);
+
+            return data; // Returnera data om anroparen behöver den
+        } catch (error) {
+            console.error('Error:', error);
+            throw error; // Skicka vidare felet så anroparen kan hantera det
+        }
+    }
+
+    public static async GetUserProfile() {
+        const token = localStorage.getItem('accessToken');
+
+        const res = await fetch('https://dummyjson.com/auth/me', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        const data = await res.json();
+        console.log('User Profile:', data);
+    }  
 }

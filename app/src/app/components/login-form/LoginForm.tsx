@@ -2,9 +2,17 @@
 import styles from './LoginForm.module.css';
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import { login } from "@/app/loginactions";
 
 export default function LoginForm() {
-    const [state, loginAction] = useActionState(login, undefined);
+    interface LoginState {
+        errors?: {
+            email?: string;
+            password?: string;
+        };
+    }
+
+    const [state, loginAction] = useActionState<LoginState>(login, { errors: {} });
     const { pending } = useFormStatus()
     return (
         <>
