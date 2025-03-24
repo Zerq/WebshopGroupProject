@@ -14,21 +14,37 @@ export default function Login() {
     async function submitForm(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault(); // Förhindra sidladdning
         const newErrors: { username?: string; password?: string } = {};
+        setErrors({}); // Nollställ tidigare felmeddelanden
 
         if (!username) newErrors.username = "Ange användarnamn.";
         if (!password) newErrors.password = "Ange lösenord.";
 
-        setErrors(newErrors);
-        if (Object.keys(newErrors).length > 0) return;
+            // Kontrollera om användarnamn och lösenord är tomma
+            if (!username || !password) {
+                setErrors({
+                    username: !username ? "Username is required" : undefined,
+                    password: !password ? "Password is required" : undefined,
+                });
+                return;
+            }
+
+        // if (Object.keys(newErrors).length > 0) return;
 
         try {
             const data = await Authentication.Login(username, password);
+            if (data.errors) {
+                // Om servern returnerar specifika fel för användarnamn eller lösenord
+                setErrors({
+                    username: data.errors.username || undefined,
+                    password: data.errors.password || undefined,
+                });
+                return;
+            }
             setStatusMessage(`✅ Inloggningen lyckades för ${data.firstName}!`);
             setStatusColor("white");
             setStatusType("success");
         } catch (error) {
             console.error("Login failed:", error);
-            setErrors({ username: "Användarnamn eller lösenord är felaktigt." });
             setStatusType("error");
             setStatusMessage("❌ Inloggningen misslyckades! Kontrollera användarnamn och lösenord.");
             setStatusColor("black");
@@ -72,10 +88,10 @@ export default function Login() {
                     </div>
                     <button type="submit" className={styles.submitButton}>Submit</button>
                 </form>
-                <div className={styles.successContainer} style={{ display: statusType === "success" ? "flex" : "none" }}>
+                <div className={styles.successContainer} style={{ display: statusType === "success" ? "flex" : "none" }} aria-live="assertive">
                     <p className={styles.status} style={{ color: statusColor }}>{statusMessage}</p>
                 </div>
-                <div className={styles.errorContainer} style={{ display: statusType === "error" ? "flex" : "none" }}>
+                <div className={styles.errorContainer} style={{ display: statusType === "error" ? "flex" : "none" }} aria-live="assertive">
                     <p className={styles.status} style={{ color: statusColor }}>{statusMessage}</p>
                 </div>
             </fieldset>
