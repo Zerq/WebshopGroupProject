@@ -41,25 +41,6 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-
-        /* .btnSeeDetails {
-          width: fit-content;
-          white-space: nowrap;
-          border: 1px solid rgb(31, 22, 10);
-          border-radius: 6px;
-          height: 1.6rem;
-          width: 5rem;
-          padding: 0.26rem;
-          color: aliceblue;
-          background-color: var(--bgColBtnDetails);
-          outline-offset: 0.3rem;  accessibility issue 
-          }
-          .btnSeeDetails:hover {
-            background: #e1e1e1;
-            border: 1px solid var(--bgColBtnDetails);
-            color: var(--bgColBtnDetails);
-          } 
-          */
           
         .btnBuy {
           border: 1px solid rgb(31, 22, 10);
@@ -67,7 +48,7 @@
           width: 98%; 
           height: 2rem;
           padding: 0.26rem;
-          color: aliceblue;
+          color: var(--fontColBtnBuy);
           background-color: var(--bgColBtnBuy);
           outline-offset: 0.3rem; /* accessibility issue */
         }

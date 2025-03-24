@@ -1,0 +1,109 @@
+/* We wrap everything in the MainWrapper */
+.allWrapper{
+    text-align: justify;
+    /* border: 1px solid red; */
+    margin-top: 10px;
+    /* width: 100vw; */
+    display: flex;
+    /* flex-direction: column; */
+    /* flex-flow: column nowrap; */
+    justify-content: space-between;
+    gap: 1vw;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+
+}
+
+.imageWrapper {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 1px solid black; */
+    border-radius: 8px;
+    align-items: center;
+    background-color: var(--cardColor);
+    .image {
+      width: auto;
+      height: 360px;
+      margin: 0px;
+      /* border: 1px solid orange; */
+    }
+    
+    .headersSpacing{
+        margin-bottom: 0;
+        margin-top: 0;
+        padding-left: 5px;
+        /* line-height: 0px; */
+        /* color: blue; */
+    }
+}
+.infoWrapper{
+    text-align: justify;
+    /* border: 1px solid red; */
+    margin-top: 10px;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3vw;
+    justify-content: center;
+    /* align-items: center; */
+    height: auto;
+    padding: 1vw;
+
+    .thumb {
+        width: auto;
+        height: 80px;
+        margin: 0px;
+        /* border: 1px solid orange; */
+      }
+}
+
+.thumbs{
+    display: flex;
+    list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+.price{
+    color: rgb(165, 19, 19);
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-bottom: 25px;
+}
+
+.descript{
+    font-size: small;
+}
+.myUL{
+    /* margin-bottom: 0; */
+    /* margin-top: 0; */
+    padding: 0;
+    /* line-height: 0px; */
+}
+
+.btnWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+      
+    .btnBuy {
+      border: 1px solid rgb(31, 22, 10);
+      border-radius: 6px;
+      width: 98%; 
+      height: 2rem;
+      /* padding: 0.26rem; */
+      margin-left: 3px;
+      color: var(--fontColBtnBuy);
+      background-color: var(--bgColBtnBuy);
+      outline-offset: 0.3rem; /* accessibility issue */
+    }
+
+    .btnBuy:hover {
+      background: #e1e1e1;
+      border: 1px solid var(--bgColBtnBuy);
+      color: var(--bgColBtnBuy);
+    }
+  }
