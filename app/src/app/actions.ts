@@ -1,3 +1,6 @@
+'use server';
+import { loginSchema } from "./validation";
+import { z } from "zod";
 import { ProductResult } from "./types";
 
 export function generateUniqueId(){
@@ -94,5 +97,17 @@ export class Products {
     }
 
 }
+const testUser = {
+    username: "emilys",
+    password: "emilypass"
+}
 
-// example  const product = await Products.GetProducts().limit(30).skip(60).select("title","price").fetch();
+export class Login z.object({
+    username: z.string(), ({ message: "Fel användarnamn"}).trim(),
+    password: z.string().min(6, { message: "Lösenordet måste vara 6 bokstäver långt" }),
+
+
+ 
+
+
+}
