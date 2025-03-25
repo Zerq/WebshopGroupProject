@@ -11,7 +11,6 @@ import FilterByCategory from "./components/filter-by-category/filterByCategory";
 import SearchBar from "./components/top-navigation/SearchBar";
 import style from "./page.module.css";
 
-
 export default function Home() {
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
   const [isDoneLoading, setIsDoneLoading] = useState(false);
@@ -28,9 +27,9 @@ export default function Home() {
       return Number.parseInt(val);
     };
 
-    let query:Products;
-    
-    if (filterBy === null){
+    let query: Products;
+
+    if (filterBy === null) {
       query = Products.GetProducts();
     } else {
       query = Products.getProductsByCategory(filterBy);
@@ -65,7 +64,7 @@ export default function Home() {
 
   return !isDoneLoading ? <div className={style.loadScreen}></div> :
     <div>
-     <main>
+      <main>
         <div className={style.ToolPanel}>
           <FilterByCategory></FilterByCategory>
           <OrderBy></OrderBy>
