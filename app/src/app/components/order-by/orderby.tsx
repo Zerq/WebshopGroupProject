@@ -3,7 +3,6 @@ import { SyntheticEvent } from "react";
 
 import styles from "./orderby.module.css";
 import OrderFlipper, { Direction } from "../order-flipper/OrderFlipper";
-import { ParkingMeter } from "lucide-react";
 
 export default function OrderBy() {
 
@@ -44,7 +43,7 @@ export default function OrderBy() {
     };
 
     return <div className={styles.OrderBy}>
-        <label className={styles.labelSelector} htmlFor="OrderBySelect">sortera</label>
+        <label className={styles.labelSelector} htmlFor="OrderBySelect">Sortera</label>
         <select onChange={select} defaultValue={params.get("orderBy") ?? "none"} id="OrderBySelect" name="OrderBySelect">
             <option value="none" >None</option>
             <option value="price" >Price</option>
