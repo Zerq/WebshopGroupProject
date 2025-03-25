@@ -24,7 +24,7 @@ export function Card({ product }: { product: Product }) {
     <li className={styles.card} aria-label={`Länk till ${product.title}`}>
       <a onClick={(e) => {
         e.stopPropagation();
-        router.push(`/product/${product.id}`);
+        router.push(`/products/${product.id}`);
       }} className={styles.cardLink}>
 
         <h2>{product.title}</h2>
@@ -41,7 +41,7 @@ export function Card({ product }: { product: Product }) {
           <div>
             <div>
               <p className={styles.paraD}>Pris:</p>
-              {product.price} kr
+              <span className={styles.price}>{product.price}:-</span>
             </div>
             <div>
               <p className={styles.paraD}>Kundbetyg:</p>
