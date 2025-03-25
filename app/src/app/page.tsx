@@ -15,12 +15,7 @@ import style from "./page.module.css";
 export default function Home() {
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
   const [isDoneLoading, setIsDoneLoading] = useState(true);
-  // const params = useSearchParams();
-  // const limit = params.get("limit");
-  // const skip = params.get("skip");
-  // const orderBy = params.get("orderBy");
-  // const order = params.get("order");
-  // const filterBy = params.get("filterBy");
+
 
   // useEffect(() => {
   //   const toInt = (val: unknown) => {
@@ -30,25 +25,7 @@ export default function Home() {
 
   //   let query:Products;
     
-  //   if (filterBy === null){
-  //     query = Products.GetProducts();
-  //   } else {
-  //     query = Products.getProductsByCategory(filterBy);
-  //   }
-
-  //   if (orderBy !== null && (order === "asc" || order === "desc")) {
-  //     query = query.sortBy(orderBy, order); setIsDoneLoading(true);
-  //   }
-
-  //   if (toInt(limit) !== null) {
-  //     query = query.limit(toInt(limit)!);
-  //   }
-
-  //   if (toInt(skip) !== null) {
-  //     query = query.skip(toInt(skip)!);
-  //   }
-
-  //   const timeout = setTimeout(() => { // only render loading screen if request tameks more then 200 miliseconds
+  //   const timeout = setTimeout(() => { 
   //     setIsDoneLoading(false);
   //   }, (200));
 
@@ -57,16 +34,14 @@ export default function Home() {
   //     setState(n)
   //     setIsDoneLoading(true);
   //   });
-  // }, [limit, skip, orderBy, order, filterBy]);
+  // }, []);
 
-
-  const totalLimit = 25;
-  const pageCount = Math.ceil(state.total / totalLimit);
 
   return !isDoneLoading ? <div className={style.loadScreen}></div> :
     <div>
      <main>
-        <div>Contents of landing page?</div>
+        <div className="categoryWrapper">Contents of landing page?</div>
+        <div className="campaignWrapper">Contents of landing page?</div>
       </main>
     </div>;
 }
