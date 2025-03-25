@@ -31,9 +31,6 @@
       position: absolute;
       bottom: 5px;
       width: 94%;
-      /* border: 1px solid beige;
-      border-radius: 5px;
-      box-shadow: 2px 2px rgb(146, 146, 131); */
       padding: 6px;
 
       .btnWrapper {
@@ -63,7 +60,6 @@
       .paraD {
         display: inline-flex;
         font-weight: bold;
-        /* font-size: small; */
         margin-bottom: 1rem;
         margin-right: 0.5rem;
       }
@@ -71,7 +67,6 @@
       .paraSmall {
         font-size: small;
         margin-bottom: 1rem;
-        /* margin-right: 0.5rem; */
       }
     }
   }

@@ -5,10 +5,15 @@ import Image from "next/image";
 import { generateUniqueId } from "@/app/actions";
 import { useCart } from "@/app/cartprovider";
 
+import { Inter } from 'next/font/google'
+ 
+const inter = Inter({ subsets: ['latin'] })
+ 
+
 export default function ProductDetails({ product }: { product: Product }) {
     const { addToCart } = useCart();
     return (
-        <>
+        <div className={inter.className}>
             <div className={styles.allWrapper}>
                 <div className={styles.imageWrapper}>
                     <Image
@@ -35,15 +40,19 @@ export default function ProductDetails({ product }: { product: Product }) {
                     </div>
                 </div>
                 <div className={styles.infoWrapper}>
-                    <h2 className={styles.headersSpacing}>{product.title}</h2>
-                    <h4 className={styles.headersSpacing}>Beskrivning</h4>
+                    <h2>{product.title}</h2>
+                    <h3 className={styles.headersSpacing}>Beskrivning</h3>
                     <p className={styles.descript}>{product.description}</p>
-                    <h4 className={styles.headersSpacing}>Reviews:</h4>
+                    <h3 className={styles.headersSpacing}>Reviews:</h3>
                     <ul className={styles.myUL} role="list">
                         {product.reviews.map(review =>
                             <li key={generateUniqueId()}>Betyg: {review.rating} - {review.comment}</li>
                         )}
                     </ul>
+                    <h3 className={styles.headersSpacing}>Garanti</h3>
+                    <p className={styles.descript}>{product.warrantyInformation}</p>
+                    <h3 className={styles.headersSpacing}>Artikelnummer</h3>
+                    <p className={styles.descript}>{product.sku}</p>
                     { product.images.length > 1 &&(
                         <ul className={styles.myUL} role="list">
                             <div className={styles.thumbs}>
@@ -64,6 +73,6 @@ export default function ProductDetails({ product }: { product: Product }) {
                     )}
                 </div>
             </div>
-        </>
+        </div>
     )
 }
