@@ -14,50 +14,50 @@ import style from "./page.module.css";
 
 export default function Home() {
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
-  const [isDoneLoading, setIsDoneLoading] = useState(false);
-  const params = useSearchParams();
-  const limit = params.get("limit");
-  const skip = params.get("skip");
-  const orderBy = params.get("orderBy");
-  const order = params.get("order");
-  const filterBy = params.get("filterBy");
+  const [isDoneLoading, setIsDoneLoading] = useState(true);
+  // const params = useSearchParams();
+  // const limit = params.get("limit");
+  // const skip = params.get("skip");
+  // const orderBy = params.get("orderBy");
+  // const order = params.get("order");
+  // const filterBy = params.get("filterBy");
 
-  useEffect(() => {
-    const toInt = (val: unknown) => {
-      if (typeof (val) !== "string") return null;
-      return Number.parseInt(val);
-    };
+  // useEffect(() => {
+  //   const toInt = (val: unknown) => {
+  //     if (typeof (val) !== "string") return null;
+  //     return Number.parseInt(val);
+  //   };
 
-    let query:Products;
+  //   let query:Products;
     
-    if (filterBy === null){
-      query = Products.GetProducts();
-    } else {
-      query = Products.getProductsByCategory(filterBy);
-    }
+  //   if (filterBy === null){
+  //     query = Products.GetProducts();
+  //   } else {
+  //     query = Products.getProductsByCategory(filterBy);
+  //   }
 
-    if (orderBy !== null && (order === "asc" || order === "desc")) {
-      query = query.sortBy(orderBy, order); setIsDoneLoading(true);
-    }
+  //   if (orderBy !== null && (order === "asc" || order === "desc")) {
+  //     query = query.sortBy(orderBy, order); setIsDoneLoading(true);
+  //   }
 
-    if (toInt(limit) !== null) {
-      query = query.limit(toInt(limit)!);
-    }
+  //   if (toInt(limit) !== null) {
+  //     query = query.limit(toInt(limit)!);
+  //   }
 
-    if (toInt(skip) !== null) {
-      query = query.skip(toInt(skip)!);
-    }
+  //   if (toInt(skip) !== null) {
+  //     query = query.skip(toInt(skip)!);
+  //   }
 
-    const timeout = setTimeout(() => { // only render loading screen if request tameks more then 200 miliseconds
-      setIsDoneLoading(false);
-    }, (200));
+  //   const timeout = setTimeout(() => { // only render loading screen if request tameks more then 200 miliseconds
+  //     setIsDoneLoading(false);
+  //   }, (200));
 
-    query.fetch().then(n => {
-      clearTimeout(timeout);
-      setState(n)
-      setIsDoneLoading(true);
-    });
-  }, [limit, skip, orderBy, order, filterBy]);
+  //   query.fetch().then(n => {
+  //     clearTimeout(timeout);
+  //     setState(n)
+  //     setIsDoneLoading(true);
+  //   });
+  // }, [limit, skip, orderBy, order, filterBy]);
 
 
   const totalLimit = 25;
@@ -66,13 +66,7 @@ export default function Home() {
   return !isDoneLoading ? <div className={style.loadScreen}></div> :
     <div>
      <main>
-        <div className={style.ToolPanel}>
-          <FilterByCategory></FilterByCategory>
-          <OrderBy></OrderBy>
-          <SearchBar />
-        </div>
-        <ProductList products={state.products ?? []} />
-        <PaginationNav path={"/products"} pagesCount={pageCount} limit={totalLimit}></PaginationNav>
+        <div>Contents of landing page?</div>
       </main>
     </div>;
 }
