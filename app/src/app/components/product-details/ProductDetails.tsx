@@ -4,11 +4,10 @@ import styles from "./product-details.module.css";
 import Image from "next/image";
 import { generateUniqueId } from "@/app/actions";
 import { useCart } from "@/app/cartprovider";
-
 import { Inter } from 'next/font/google'
- 
-const inter = Inter({ subsets: ['latin'] })
- 
+
+const inter = Inter({ subsets: ['latin'] });
+
 
 export default function ProductDetails({ product }: { product: Product }) {
     const { addToCart } = useCart();
