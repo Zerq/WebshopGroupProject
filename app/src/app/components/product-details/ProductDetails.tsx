@@ -24,7 +24,7 @@ export default function ProductDetails({ product }: { product: Product }) {
                         alt={`Image of ${product.title}`}
                     />
                                        
-                    <p className={styles.price}>{product.price} :-</p>
+                    <p className={styles.price}>{product.price}:-</p>
                     <div className={styles.btnWrapper}>
                         <button
                             className={styles.btnBuy}
