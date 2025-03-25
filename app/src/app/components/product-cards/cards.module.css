@@ -32,7 +32,13 @@
       bottom: 5px;
       width: 94%;
       padding: 6px;
-
+      
+      .price {
+        color: rgb(165, 19, 19);
+        font-size: medium;
+        font-weight: bolder;
+        margin-bottom: 25px;
+      }
       .btnWrapper {
         display: flex;
         align-items: center;

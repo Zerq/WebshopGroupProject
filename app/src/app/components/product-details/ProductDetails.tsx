@@ -24,7 +24,7 @@ export default function ProductDetails({ product }: { product: Product }) {
                         alt={`Image of ${product.title}`}
                     />
                                        
-                    <p className={styles.price}>{product.price} kr</p>
+                    <p className={styles.price}>{product.price} :-</p>
                     <div className={styles.btnWrapper}>
                         <button
                             className={styles.btnBuy}
@@ -40,7 +40,7 @@ export default function ProductDetails({ product }: { product: Product }) {
                     </div>
                 </div>
                 <div className={styles.infoWrapper}>
-                    <h2>{product.title}</h2>
+                    <h2 className={styles.h2Spacing}>{product.title}</h2>
                     <h3 className={styles.headersSpacing}>Beskrivning</h3>
                     <p className={styles.descript}>{product.description}</p>
                     <h3 className={styles.headersSpacing}>Reviews:</h3>
