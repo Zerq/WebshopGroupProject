@@ -1,0 +1,29 @@
+.SendMailDialog{
+    background-color: orange;
+    color: #000;
+    position: absolute;
+    right: 0; /*i swear to <insert deity here> this motherfucker is totally gaslighting me i should not need that width and left thingy under this... but right:0; does nothing wtf?!*/ 
+    left: calc(100% - 13rem);
+    width: 13rem;
+    bottom: 0;
+    z-index: 1000;
+    padding: 1rem;
+    border: .3rem dashed #000;
+
+    button {
+        margin-right: 1rem;
+        border: 0;
+        background-color: transparent;
+        font-size: large;
+        color: black;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+
+    a {
+        font-size: large;
+        color: black;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+}
