@@ -1,10 +1,15 @@
 .ToolPanel{
   display: flex;
+  flex-wrap: wrap;
   padding: 0.5rem;
   padding-bottom: 0;
   padding-right: 0;
-  
+  width: calc(100% - 1rem);
+
+
+
   div, form {
+    flex:auto;
     height: 2rem;
     input {
       height: 100%;
@@ -37,7 +42,22 @@
   font-family: var(--font-geist-sans);
 }
 
+.loadScreen {
+  position: absolute;
+  width: 100vw;
+  height: calc(100vh - 2rem);
+  
+  background-image: url("/tube-spinnerdark.svg");
+  background-repeat: no-repeat;
+  background-position:calc(50vw - 6rem);
+  background-size: 12rem;
+}
+
 @media (prefers-color-scheme: dark) {
+  .loadScreen{
+    background-image: url("/tube-spinner.svg");
+  }
+  
   .page {
     --gray-rgb: 255, 255, 255;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);

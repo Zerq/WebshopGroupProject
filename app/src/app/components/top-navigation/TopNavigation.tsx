@@ -13,7 +13,6 @@ export default function TopNavigation() {
 
             {/* MOBILE SCREENS  */}
             <div className={styles.mobileViewContainer}>
-                <Link className={styles.siteLogo} href="/">webshoppen</Link>
                 <Menu />
             </div>
 
