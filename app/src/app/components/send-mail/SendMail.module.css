@@ -1,0 +1,29 @@
+.SendMailDialog{
+    background-color: orange;
+
+    color: black;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    padding: 1rem;
+    border: dashed 0.3rem black;
+
+    button {
+        margin-right: 1rem;
+        border: 0;
+        background-color: transparent;
+        font-size: large;
+        color: black;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+
+    a {
+        font-size: large;
+        color: black;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+}
