@@ -1,5 +1,16 @@
 import { ProductResult } from "./types";
 
+export function generateUniqueId(){
+    const randomInt = getRandomInt(1, 1000);
+    return randomInt;
+}
+
+function getRandomInt(min: number, max: number): number {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
 export const fetchProduct = async (id: string) => {
     const res = await fetch(`https://dummyjson.com/products/${id}`);
     const data = await res.json();

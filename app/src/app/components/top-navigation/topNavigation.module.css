@@ -119,7 +119,7 @@
     }
 
     .searchBarOuterWrapper {
-        width: 100%;
+        width: auto;
         display: flex;
         justify-content: center;
 
