@@ -1,8 +1,8 @@
 "use client";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import style from "./page.module.css";
 import { renderToStaticMarkup } from "react-dom/server";
-import { NewLetterData } from "../types";
+import { NewLetterData, TransactionResult } from "../types";
 import { useSearchParams } from "next/navigation";
 
 function send(email: string, title: string, content: ReactNode): Promise<boolean> {
@@ -43,70 +43,78 @@ function send(email: string, title: string, content: ReactNode): Promise<boolean
   });
 }
 
-async function register(email: string): Promise<boolean> {
+const EMAIL_ERROR =  "Email kunde inte skickas";
+const RECORD_NOT_FOUND = "Rad kunde inte hittas i registret";
+const KEY_MISSMATCH = "Nyckel matchade inte";
+
+
+async function register(email: string): Promise<TransactionResult<boolean>> {
   const key = crypto.randomUUID();
   const rex = /[^@]*@[^\.]+\..*/;
   if (!rex.test(email)) {
-    return false;
-  }1
+    return { status: false, message: "invalid email" };
+  }
 
-  await send(email, "bekräfta email", <div>
+  const mailResult = await send(email, "bekräfta email", <div>
     <a href={`http://localhost:3000/nyhetsbrev?action=confirm&key=${key}&email=${email}`} >bekräfta email</a>
   </div>);
 
-  localStorage.setItem("fake_NewsLetter_" + email, JSON.stringify({ email: email, key: key, confirmed: false })); //unconfirmed 
-
-  return true;
+  if (mailResult) {
+    localStorage.setItem("fake_NewsLetter_" + email, JSON.stringify({ email: email, key: key, confirmed: false })); //unconfirmed 
+  }
+  return { status: mailResult, message: !mailResult ? EMAIL_ERROR: "" };
 }
 
-async function confirm(email: string, key: string): Promise<boolean> {
+async function confirm(email: string, key: string): Promise<TransactionResult<boolean>> {
 
   const str = localStorage.getItem("fake_NewsLetter_" + email);
 
   if (!str) {
-    return false;
+    return { status: false, message: RECORD_NOT_FOUND};
   }
 
   const data = JSON.parse(str) as NewLetterData;
 
   if (data.key !== key) {
-    return false;
+    return { status: false, message: KEY_MISSMATCH};
+  }
+
+
+  if (data.confirmed) {
+    return { status: false, message: "Email var redan bekräftat." };
   }
 
   data.confirmed = true;
-  localStorage.setItem("fake_NewsLetter_" + email, JSON.stringify(data)); //save as registered
 
-  await send(email, "confirmation successfull", <div>
+  const mailresult = await send(email, "Email bekräftning lyckades", <div>
     <h3>email verifieratl</h3>
     <p>Välkommen till Webbshopen </p>
     <a href={`http://localhost:3000/nyhetsbrev?action=unsub&key=${key}&email=${email}`} >Avregisterra från nyhetsbrev</a>
   </div>);
 
-  return true;
+  if (mailresult) {
+    localStorage.setItem("fake_NewsLetter_" + email, JSON.stringify(data)); //save as registered
+  }
+
+  return { status: mailresult, message: !mailresult ? EMAIL_ERROR: ""};
 }
 
-async function unRegister(email: string, key:string): Promise<boolean> {
-    const index = "fake_NewsLetter_" + email;
-    const item = localStorage.getItem(index);
+async function unRegister(email: string, key: string): Promise<TransactionResult<boolean>> {
+  const index = "fake_NewsLetter_" + email;
+  const item = localStorage.getItem(index);
 
-    if (!item) {
-      return false;
-    }
-    
-    const data = JSON.parse(item) as NewLetterData;
+  if (!item) {
+    return { status: false, message: RECORD_NOT_FOUND };
+  }
 
-    if (data.key !== key || data.email !== email ){
-      return false;
-    }
+  const data = JSON.parse(item) as NewLetterData;
 
-    localStorage.removeItem(index);
+  if (data.key !== key) {
+    return { status: false, message: KEY_MISSMATCH };
+  }
 
-    await send(email, "unsubscription  successfull", <div>
-      <h3>unsubscription  successfull</h3>
-      <p>Data has been removed.</p>
-    </div>);
-
-    return true;
+  localStorage.removeItem(index);
+  return { status: true, message: "" };
 }
 
 export default function NyhetsbrevPage() {
@@ -116,37 +124,59 @@ export default function NyhetsbrevPage() {
     await register(email.toString());
   };
 
+  const [message, setMessage] = useState("");
+
   const params = useSearchParams();
   const key = params.get("key");
   const email = params.get("email");
   const action = params.get("action");
-  
 
-  if (key && email && action === "unsub") {
-    unRegister(email, key).then(n => {
-      if (n) {
-        return <div>unsubscription successfull</div>
-      } else {
-        return <div>unsubscription failed</div>
-      }
-    });
+  const [result, setResult] = useState("normal" as "normal" | "subDone" | "subFail" | "confDone" | "confFail" | "unSubDone" | "unSubFail");
+
+  useEffect(() => {
+    if (key && email && action === "unsub") {
+      unRegister(email, key).then(n => {
+        if (n.status) {
+          setResult("subDone");
+        } else {
+          setResult("subFail");
+          setMessage(n.message);
+        }
+      });
+    }
+
+    if (key && email && action === "confirm") {
+      confirm(email, key).then(n => {
+        if (n.status) {
+          setResult("confDone");
+        } else {
+          setResult("confFail");
+          setMessage(n.message);
+        }
+      });
+    }
+  }, [key, email, action]);
+
+
+
+  switch (result) {
+    case "confDone":
+      return <div className={style.newsLetterBox}>Bekräftning email skickat</div>
+    case "confFail":
+      return <div className={style.newsLetterBox}>Kunde inte bekräfta email<br /><p className={style.error}>{message}</p></div>
+    case "subDone":
+      return <div className={style.newsLetterBox}>Email avregisterart</div>
+    case "subFail":
+      return <div className={style.newsLetterBox}>Kunde inte avregistrara<br /><p className={style.error}>{message}</p></div>
+    default:
+      return <div className={style.newsLetterBox}>
+        <h3 className={style.massage}>Sign up for news letter</h3>
+        <form action={postForm}>
+          <div className={style.inputWrapper}>
+            <input className={style.emailInput} id="email" name="email" type="email"></input>
+            <button className={style.emailButton} type="submit">Register</button>
+          </div>
+        </form>
+      </div>;
   }
-
-  if (key && email && action === "confirm") {
-    confirm(email, key).then(n => {
-      if (n) {
-        return <div>confirmation successfull</div>
-      } else {
-        return <div>confirmation failed</div>
-      }
-    });
-  }
-
-  return <div>
-    <h3>Sign up for news letter</h3>
-    <form action={postForm}>
-      <input id="email" name="email" type="email"></input>
-      <button type="submit">register</button>
-    </form>
-  </div>;
 }

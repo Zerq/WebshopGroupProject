@@ -75,3 +75,11 @@ export interface NewLetterData {
     key: string, 
     confirmed: boolean
 }
+
+export interface TransactionResult<T> {
+    status: T;
+    message: string;
+}
+
+
+

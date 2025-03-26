@@ -1,3 +1,66 @@
+.newsLetterBox{
+  width: fit-content;
+  margin: auto;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.emailButton {
+  background-color: black;
+  color: white;
+  border-radius: 2rem;
+  padding:0.3rem;
+  font-weight: bolder;
+  user-select: none;
+  cursor: pointer;
+}
+
+.emailButton:hover {
+  background-color: rgba(0, 0, 0, 0.678);
+
+}
+
+ 
+.emailInput{
+
+  padding:0.3rem;
+  border: 0;
+  background-color: transparent !important;
+  outline: 0;
+}
+
+.emailInput:autofill{
+  background-color: transparent !important;
+}
+
+.emailInput:-webkit-autofill,
+.emailInput:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
+}
+
+
+.inputWrapper{
+ border: solid 0.13rem black;
+ border-radius: 2rem;
+padding: 0.1rem;
+margin: 1rem;
+user-select: none;
+}
+
+.registerbox {
+
+}
+
+.massage {
+
+}
+
+.error{
+  color: red;
+}
+
+
+
 .SendMailDialog{
   background-color: orange;
   color: #000;
