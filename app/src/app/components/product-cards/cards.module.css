@@ -12,6 +12,7 @@
     position: relative;
     justify-content: center;
     align-items: center;
+    max-width: 280px;
 
     .imageWrapper {
       display:flex;
