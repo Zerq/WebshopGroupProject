@@ -118,37 +118,6 @@
         font-size: 1.5rem;
     }
 
-    .searchBarOuterWrapper {
-        width: auto;
-        display: flex;
-        justify-content: center;
-
-    }
-
-    .searchBarInnerWrapper {
-        display: flex;
-        position: relative;
-        align-items: center;
-        width: 70%;
-        height: 2.25rem;
-    }
-
-    .searchInput {
-        flex: 1;
-        outline: none;
-        color: black;
-        text-align: center;
-        font-size: 0.75rem;
-    }
-
-    .searchButton {
-        position: absolute;
-        padding-left: 1rem;
-        border: none;
-        cursor: pointer;
-        size: 0.75rem;
-        background: none;
-    }
 
     .navIconsWrapper {
         display: flex;

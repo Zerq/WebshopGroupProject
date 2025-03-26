@@ -91,8 +91,8 @@ export class Products {
         return this.#append(`sortBy=${sortCriteria}&order=${order}`);
     }
 
-    public addSearchFilter(query: string) {
-        return this.#append(`search=${encodeURIComponent(query)}`); 
+    public addSearchFilter(q: string) {
+        return this.#append(`search=${encodeURIComponent(q)}`); 
     }
  
 

@@ -32,7 +32,7 @@ export default function Home() {
     let query: Products;
     
     if (searchQuery) {
-      query = Products.GetProductBySearch(searchQuery);
+      query = Products.GetProductBySearch(searchQuery)
     } else if (filterBy) {
       query = Products.getProductsByCategory(filterBy);
     } else {
@@ -58,10 +58,17 @@ export default function Home() {
 
     query.fetch().then(n => {
       clearTimeout(timeout);
+    // included filtration so just seach done on product and not description (couldnt solve it via the API call)
+    if (searchQuery) {
+      n.products = n.products.filter(product =>
+        product.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      n.total = n.products.length;
+    }
       setState(n)
       setIsDoneLoading(true);
     });
-  }, [limit, skip, orderBy, order, filterBy]);
+  }, [limit, skip, orderBy, order, filterBy, searchQuery]);
 
 
   const totalLimit = 25;
