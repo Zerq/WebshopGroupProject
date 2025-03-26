@@ -34,19 +34,13 @@ export default function Home() {
             height={350}
             alt={`Image of Eastern eggs in a basket`}
           />
+          <div className={styles.overlay}>
+            <h1>Oslagbara priser<br/>under hela <br/>Påsk kampanjen</h1>
+        </div>
         </div>
         <div className={styles.chosenProducts}>
           <ProductList products={state.products ?? []} />
         </div>
-        {/* <div className={styles.campaignImg}>
-          <Image
-            className={styles.image}
-            src="/pask-02.png"
-            width={400}
-            height={400}
-            alt={`Image of Eastern eggs in a basket`}
-          />
-        </div> */}
       </div>
     </div>
 }
