@@ -1,5 +1,9 @@
 import { ProductResult } from "./types";
 
+export function getCampaignIds(){
+    const ids: number[] = [1,2,3];
+    return ids;
+} 
 export function generateUniqueId(){
     const randomInt = getRandomInt(1, 1000);
     return randomInt;

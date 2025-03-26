@@ -1,14 +1,16 @@
-"use client";
+// "use client";
 import styles from "./page.module.css";
 
 
 export default function Home() {
 
-  return 
-    <div>
-     <main>
-        <div className={styles.categoryWrapper}>Contents of landing page?</div>
-        <div className={styles.campaignWrapper}>Contents of landing page?</div>
-      </main>
-    </div>;
+  return (
+    <div className={styles.allWrapper}>
+        <div className={styles.categoryWrapper}>
+          Kategori ikoner
+        </div>
+        <div className={styles.campaignWrapper}>
+          Här ska produktbilderna hamna
+        </div>
+    </div>);
 }
