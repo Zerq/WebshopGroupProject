@@ -1,4 +1,3 @@
-
 export interface AppModel {
     products: Product[]   
 }
@@ -70,4 +69,17 @@ export interface CartContextType{
     removeCartItem: (id: number) => void;
 
 }
+
+export interface NewLetterData { 
+    email: string; 
+    key: string, 
+    confirmed: boolean
+}
+
+export interface TransactionResult<T> {
+    status: T;
+    message: string;
+}
+
+
 
