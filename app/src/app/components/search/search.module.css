@@ -59,7 +59,7 @@
 /*  Dropdown */
 .dropdownContainer {
   position: absolute;
-  width: 100;
+  top:27px;
   left: 0;
   flex-direction: column;
   background-color: rgb(145, 130, 103);
