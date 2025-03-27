@@ -1,8 +1,9 @@
-.searchContainer {
-    display: flex;
-    
-}
 
+/* searchbox */
+
+.searchContainer {
+   min-height: 3rem; 
+}
 
 .inputOuterWrapper {
     width: auto;
@@ -21,27 +22,81 @@
 
 .searchbox {
     display:flex;
+    height: 3rem;
+}
+
+.searchInput {
+  caret-color: white;
 }
 
 
-
+/*  Dropdown */
 .dropdownContainer{
     display:flex;
     flex-direction: column;
     position:absolute;
-    background-color: #868181;
-    border-bottom: 1px solid rgb(146, 137, 137);
+
+    background-color: rgb(68, 57, 57);
+
+    width: 80%;                               /* fix*/
+    border-bottom: 1px solid rgb(196, 179, 179);
     z-index:999
 }
 
 .dropdownList{
     flex:1;
-    border-bottom: 1px solid rgb(25, 50, 53);
-    color: rgb(26, 24, 23);
+    border-bottom: 1px solid rgb(19, 29, 31);
+    color:white;
     margin: 10px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+  }
+
+.dropdownList:hover {
+  background: rgb(104, 103, 103);
+  transition: background 1s;
+}
+
+.seeMoreResults {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  text-align: center;
+  font-style: italic;
+
+}
+.seeMoreResults:hover {
+  background: rgb(104, 103, 103);
+  transition: background 1s;
+
+}
+
+.noResult {
+  padding: 0.5rem 0.75rem;
+  color: #888;
+  text-align: center;
+  cursor: default;
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Container for the search bar and dropdown */
+.searchContainer {
+  position: relative;
+  display: inline-block;
+  width: 40%;
+}
 
 
 .searchInput {
@@ -49,9 +104,12 @@
     max-width: 500px;
     min-height: 30px;
     outline: none;
-    color: black;
-    text-align: center;
-    font-size: 0.75rem;
+    color: rgb(66, 54, 54);
+    text-align: left;
+    font-size: 1.6rem;
+    background-color: rgb(110, 103, 94);
+    border-radius: 3px;
+    border:none;
 }
 
 .searchButton {
@@ -67,126 +125,8 @@
 
 
 
-/* Container for the search bar and dropdown */
-.searchContainer {
-    position: relative;
-    display: inline-block;
-    width: 40%;
-  }
-  
-  /* Form wrapper (search input and button) */
-  .searchWrapper {
-    display: flex;
-    align-items: center;
-    /* ...additional form styles as needed... */
-  }
-  
-  /* Search input field styling */
-  .searchbox {
-    flex: 1;
-    border-radius: 4px 0 0 4px;
-    /* ...additional input styles (font-size, focus outline)... */
-  }
-  
-  /* Search button styling */
-  .searchButton {
-    border: none;
-    cursor: pointer;
-  }
-  
-  /* Suggestions dropdown list container */
-  .suggestionsList {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    width: 100%;
-    max-height: 500px;
-    overflow-y: auto;
-    background: #423b13;
-    color: gray;
-    border-radius: 0 0 4px 4px;
-    list-style: none;
-  }
-  
-  /* Individual suggestion item */
-  .suggestionItem {
-    padding: 0.5rem 0.75rem;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .suggestionItem:hover {
-    background: #eef;
-  }
-  
-  /* "See more results" list item at bottom */
-  .seeMore {
-    padding: 0.5rem 0.75rem;
-    cursor: pointer;
-    text-align: center;
-    font-style: italic;
-    transition: background 0.2s;
-  }
-  .seeMore:hover {
-    background: #eef;
-  }
-  
-  /* No-results message item */
-  .noResult {
-    padding: 0.5rem 0.75rem;
-    color: #888;
-    text-align: center;
-    cursor: default;
-  }
-  
-  /* Alternate dropdown style variant (with image, title, price stacked) */
-  .suggestionsListAlt {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    width: 100%;
-    max-height: 300px;
-    overflow-y: auto;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-top: none;
-    border-radius: 0 0 4px 4px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Alternate suggestion item layout */
-  .suggestionItemAlt {
-    padding: 0.5rem;
-    cursor: pointer;
-    transition: background 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .suggestionItemAlt:hover {
-    background: #eef;
-  }
-  
-  /* Alternate suggestion item elements */
-  .suggestionImageAlt {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    margin-bottom: 0.5rem;
-  }
-  
-  .suggestionTitleAlt {
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-  }
-  
-  .suggestionPriceAlt {
-    font-size: 0.85rem;
-    color: #555;
-  }
-  
+
+
+
+
+

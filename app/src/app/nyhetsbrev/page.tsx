@@ -8,7 +8,7 @@ import PaginationNav from "../components/navigation/pagination-nav";
 import { useSearchParams } from "next/navigation";
 import OrderBy from "../components/order-by/orderby";
 import FilterByCategory from "../components/filter-by-category/filterByCategory";
-import SearchBar from "../components/top-navigation/SearchBar";
+import SearchBar from "../components/search/search";
 import style from "./page.module.css";
 
 

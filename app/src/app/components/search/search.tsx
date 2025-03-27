@@ -16,7 +16,7 @@ function debounce(myfunc: (...args: any[]) => void, delay: number) {
   };
 }
 
-// Search
+// Search main component
 export default function Search() {
   const [userInput, setUserInput] = useState('');
   const [matchingProducts, setMatchingProducts] = useState<Product[]>([]);
@@ -61,11 +61,8 @@ export default function Search() {
     }
   }
 
-  // Handle Form-Submit
-  function handleSearchSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    const trimmed = userInput.trim();
+  function navigateToSearchResults(query: string) {
+    const trimmed = query.trim();
     const params = new URLSearchParams(searchParams.toString());
     
     if (!trimmed) {
@@ -75,21 +72,23 @@ export default function Search() {
     }
     router.push(`${pathname}?${params.toString()}`);
     setIsDropdownVisible(false);
-
   }
 
-  // Handle dropdown produktval
+// Handles routes routing/dropdown visability when needed/
+  function handleSearchSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    navigateToSearchResults(userInput);
+  }
+
+  // Handle dropdown-seeMoreResults
   function handleDropdownProductSelction(prod: Product) {
-    // Go to the product detail page for the selected suggestion
     router.push(`/products/${prod.id}`);
     setIsDropdownVisible(false);
   }
 
-
-
   // Handle dropdown-seeMoreResults
   function handleSeeMoreResults() {
-    setIsDropdownVisible(false);
+    navigateToSearchResults(userInput);
   }
 
   return (
@@ -105,8 +104,22 @@ export default function Search() {
                     className={styles.searchInput}
                     />
                     <button type="submit" className={styles.searchButton}>
-                    🔍
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="16" 
+                        height="16" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="white" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"
+                      >
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="72" y1="72" x2="16.65" y2="16.65"></line>
+                      </svg>
                     </button>
+ 
                 </form>
             </div>
         </div>
@@ -118,7 +131,7 @@ export default function Search() {
                 <li
                     className={styles.dropdownList}
                     key={prod.id}
-                    onMouseDown={() => handleDropdownProductSelction(prod)}   // better to use than OnEven since flicker
+                    onMouseDown={() => handleDropdownProductSelction(prod)}   
                 >
                   {prod.title} 
                 </li>
