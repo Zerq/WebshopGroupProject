@@ -66,9 +66,8 @@ export default function ProductDetails({ product }: { product: Product }) {
                                             height={380}
                                             alt={`Thumbnail ${index + 1} of ${product.title}`}
                                             onClick={() => setSelectedImage(img)} // Uppdaterar den stora bilden
-                                            style={{ cursor: "pointer", border: selectedImage === img ? "2px solid #ddc69c" : "none" }}
+                                            style={{ cursor: "pointer",borderRadius:"10px", boxShadow: selectedImage === img ? "0 0 15px rgba(0, 0, 0, 0.5)" : "none" }}
                                         />
-
                                     </li>
                                 ))}
                             </div>
