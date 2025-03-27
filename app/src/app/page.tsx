@@ -9,15 +9,15 @@ import Image from "next/image";
 
 
 export default function Home() {
-  const productIds: Array<string> = ["1", "2", "3","8"];
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
   const [isDoneLoading, setIsDoneLoading] = useState(false);
   useEffect(() => {
+    const productIds: Array<string> = ["1", "2", "3","8"];
     getCampaignIds(productIds).then(n => {
       setState(n);
       setIsDoneLoading(true);
     });
-  }, [productIds]);
+  }, []);
 
 
   return !isDoneLoading ? <div className={styles.loadScreen}></div> :
