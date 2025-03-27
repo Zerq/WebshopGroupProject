@@ -10,71 +10,12 @@ import OrderBy from "./components/order-by/orderby";
 import FilterByCategory from "./components/filter-by-category/filterByCategory";
 import Search from "./components/search/search";
 import style from "./page.module.css";
+import styles from "./page.module.css";
 
 
 export default function Home() {
-  const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
-  const [isDoneLoading, setIsDoneLoading] = useState(false);
-  const params = useSearchParams();
-  const limit = params.get("limit");
-  const skip = params.get("skip");
-  const orderBy = params.get("orderBy");
-  const order = params.get("order");
-  const filterBy = params.get("filterBy");
-  const searchQuery = params.get("q");
 
-  useEffect(() => {
-    const toInt = (val: unknown) => {
-      if (typeof (val) !== "string") return null;
-      return Number.parseInt(val);
-    };
-
-    let query: Products;
-    
-    if (searchQuery) {
-      query = Products.GetProductBySearch(searchQuery)
-    } else if (filterBy) {
-      query = Products.getProductsByCategory(filterBy);
-    } else {
-      query = Products.GetProducts();
-    }
-
-    
-    if (orderBy !== null && (order === "asc" || order === "desc")) {
-      query = query.sortBy(orderBy, order); setIsDoneLoading(true);
-    }
-
-    if (toInt(limit) !== null) {
-      query = query.limit(toInt(limit)!);
-    }
-
-    if (toInt(skip) !== null) {
-      query = query.skip(toInt(skip)!);
-    }
-
-    const timeout = setTimeout(() => { // only render loading screen if request tameks more then 200 miliseconds
-      setIsDoneLoading(false);
-    }, (200));
-
-    query.fetch().then(n => {
-      clearTimeout(timeout);
-    // included filtration so just seach done on product and not description (couldnt solve it via the API call)
-    if (searchQuery) {
-      n.products = n.products.filter(product =>
-        product.title.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-      n.total = n.products.length;
-    }
-      setState(n)
-      setIsDoneLoading(true);
-    });
-  }, [limit, skip, orderBy, order, filterBy, searchQuery]);
-
-
-  const totalLimit = 25;
-  const pageCount = Math.ceil(state.total / totalLimit);
-
-  return !isDoneLoading ? <div className={style.loadScreen}></div> :
+  return 
     <div>
      <main>
         <div className={style.ToolPanel}>
@@ -84,6 +25,8 @@ export default function Home() {
         </div>
         <ProductList products={state.products ?? []} />
         <PaginationNav path={"/products"} pagesCount={pageCount} limit={totalLimit}></PaginationNav>
+        <div className={styles.categoryWrapper}>Contents of landing page?</div>
+        <div className={styles.campaignWrapper}>Contents of landing page?</div>
       </main>
     </div>;
 }
