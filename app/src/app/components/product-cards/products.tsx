@@ -49,7 +49,6 @@ export function Card({ product }: { product: Product }) {
             </div>
             <p className={styles.paraSmall}>{product.description}</p>
           </div>
-          {/* <button className={styles.btnSeeDetails} aria-label={`Se detaljer om ${product.title}`}>Se detaljer</button> */}
           <div className={styles.btnWrapper}>
             <button
               className={styles.btnBuy}

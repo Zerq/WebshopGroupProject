@@ -9,7 +9,7 @@ import Image from "next/image";
 
 
 export default function Home() {
-  const productIds: Array<string> = ["1", "2", "3"];
+  const productIds: Array<string> = ["1", "2", "3","8"];
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
   const [isDoneLoading, setIsDoneLoading] = useState(false);
   useEffect(() => {
