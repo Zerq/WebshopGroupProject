@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="sv">
       <CartProvider>
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <TopNavigation/>
