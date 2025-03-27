@@ -43,9 +43,9 @@ export default function OrderBy() {
     };
 
     return <div className={styles.OrderBy}>
-        <label className={styles.labelSelector} htmlFor="OrderBySelect">sortera</label>
+        <label className={styles.labelSelector} htmlFor="OrderBySelect">Sortera</label>
         <select onChange={select} defaultValue={params.get("orderBy") ?? "none"} id="OrderBySelect" name="OrderBySelect">
-            <option value="none" >None</option>
+            <option value="none" >Inge</option>
             <option value="price" >Price</option>
             <option value="title" >Title</option>
             <option value="category" >Category</option>4
