@@ -26,7 +26,7 @@ export default function TopNavigation() {
                     <Link href="/products">Produkter</Link>
                     <Link href="/nyhetsbrev">Nyhetsbrev</Link>
                     <div className={styles.navIconsWrapper}>
-                        <Link href="/login" className={styles.loginLink}>Login</Link>
+                        {/* <Link href="/login" className={styles.loginLink}>Login</Link> */}
                         <Link href="/cart">🛒
                             <span className={styles.cartCount}>
                                 {cartItems.reduce((total, item) => total + item.quantity, 0)}
