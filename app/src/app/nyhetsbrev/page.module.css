@@ -5,8 +5,7 @@
   padding-bottom: 0;
   padding-right: 0;
   width: calc(100% - 1rem);
-
-
+  
 
   div, form {
     flex:auto;
@@ -22,6 +21,7 @@
   }
 
 }
+
 
 
 .page {
