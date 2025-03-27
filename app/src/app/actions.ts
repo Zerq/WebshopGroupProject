@@ -102,5 +102,3 @@ export class Products {
     }
 
 }
-
-// example  const product = await Products.GetProducts().limit(30).skip(60).select("title","price").fetch();

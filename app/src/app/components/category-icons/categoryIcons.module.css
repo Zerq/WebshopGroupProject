@@ -1,0 +1,47 @@
+.categoryList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  margin: 1rem;
+  /* border: 1px solid orange; */
+  /* grid-template-columns: repeat(8, auto); */
+  /* Två kolumner */
+  gap: 5px;
+
+  li {
+    list-style-type: none;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  p {
+    margin-top: auto;
+  }
+}
+
+.product {
+  margin-top: auto;
+  width: 40%;
+  height: auto;
+  object-fit: cover;
+}
+
+.laptops {
+  white-space: nowrap;
+  font-size: .8rem;
+  text-align: center;
+}
+
+.category,
+.kitchen_accessories,
+.mobile_accessories,
+.beauty {
+  font-size: .8rem;
+  text-align: center;
+  white-space: nowrap;
+}
