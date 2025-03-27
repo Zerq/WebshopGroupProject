@@ -1,26 +1,28 @@
-.ToolPanel{
-  display: flex;
-  flex-wrap: wrap;
+.ToolPanel {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* En kolumn på små skärmar */
+  gap: 0.5rem;
   padding: 0.5rem;
   padding-bottom: 0;
   padding-right: 0;
   width: calc(100% - 1rem);
+}
 
-
-
-  div, form {
-    flex:auto;
-    height: 2rem;
-    input {
-      height: 100%;
-    }
-    button {
-      height: 100%;
-      width: 2rem;
-      background-color: transparent;
-    }
+/* När skärmen blir större än 768px, använd tre kolumner */
+@media (min-width: 768px) {
+  .ToolPanel {
+    grid-template-columns: repeat(3, 1fr);
+    /* Tre kolumner */
   }
+}
 
+.ToolPanel>div,
+.ToolPanel>form {
+  height: 2rem;
+  display: flex;
+  /* Behåller flex inuti för input och knappar */
+  align-items: center;
 }
 
 
