@@ -27,7 +27,7 @@ export default function CartPage() {
                             <div className={styles.title}>{item.title}</div>
                             <div className={styles.s1}>
                                 <h2><span className={styles.priceQuantity} aria-live="polite">{Math.ceil(item.price * item.quantity)}</span>
-                                    <span className={styles.priceCurrency}> kr</span></h2>
+                                    <span className={styles.priceCurrency}> &euro;</span></h2>
                                 <div className={styles.incredecre}>
                                     <button
                                         onClick={() =>
@@ -56,7 +56,7 @@ export default function CartPage() {
                     <h2>
                         <span className={styles.fontBold}>Totalt: </span>
                         <span className={styles.totalPrice} aria-live="polite">{totalPrice}</span>
-                        <span className={styles.currency}> kr</span>
+                        <span className={styles.currency}> &euro;</span>
                     </h2>
                 </div>
             </ul>

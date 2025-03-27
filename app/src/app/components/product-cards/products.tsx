@@ -41,7 +41,7 @@ export function Card({ product }: { product: Product }) {
           <div>
             <div>
               <p className={styles.paraD}>Pris:</p>
-              <span className={styles.price}>{product.price * 0.75}:-</span>
+              <span className={styles.price}>{product.price}&euro;</span>
             </div>
             <div>
               <p className={styles.paraD}>Kundbetyg:</p>
