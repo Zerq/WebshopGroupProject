@@ -40,9 +40,7 @@ export default function FilterByCategory() {
     return <div className={styles.OrderBy}>
         <label className={styles.labelSelector} htmlFor="FilterBySelect"></label>
         <select onChange={select} defaultValue={params.get("orderBy") ?? "none"} id="FilterBySelect" className={styles.filterBySelect} name="FilterBySelect">
-            <option value="none" className="{kategorier}">-- Alla Kategorier --</option>
-           
-            {...[<option key="-1" value="none" ></option>, ...categories.map((n,i)=> <option  key={i} value={n}>{n}</option>)]}
+            {...[<option key="-1" value="none" className="{kategorier}">-- Alla Kategorier --</option>, ...categories.map((n,i)=> <option  key={i} value={n}>{n}</option>)]}
 
         </select>
     </div>;
