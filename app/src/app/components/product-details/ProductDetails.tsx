@@ -4,11 +4,10 @@ import styles from "./product-details.module.css";
 import Image from "next/image";
 import { generateUniqueId } from "@/app/actions";
 import { useCart } from "@/app/cartprovider";
-
 import { Inter } from 'next/font/google'
- 
-const inter = Inter({ subsets: ['latin'] })
- 
+
+const inter = Inter({ subsets: ['latin'] });
+
 
 export default function ProductDetails({ product }: { product: Product }) {
     const { addToCart } = useCart();
@@ -24,7 +23,7 @@ export default function ProductDetails({ product }: { product: Product }) {
                         alt={`Image of ${product.title}`}
                     />
                                        
-                    <p className={styles.price}>{product.price}:-</p>
+                    <p className={styles.price}>&euro;{product.price}</p>
                     <div className={styles.btnWrapper}>
                         <button
                             className={styles.btnBuy}
