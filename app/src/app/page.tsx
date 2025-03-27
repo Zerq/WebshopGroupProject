@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ProductList } from "./components/product-cards/products";
 import { getCampaignIds } from "./actions";
 import { ProductResult } from "./types";
 import styles from "./page.module.css";

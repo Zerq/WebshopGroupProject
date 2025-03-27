@@ -17,7 +17,6 @@ export default function TopNavigation() {
             </div>
 
             {/* DESKTOPSCREENS */}
-
             <div className={styles.desktopViewContainer}>
                 <div className={styles.logoWrapper}>
                     <Link className={styles.siteLogo} href="/">webshoppen</Link>
