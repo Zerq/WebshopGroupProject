@@ -6,6 +6,7 @@ import { getCampaignIds } from "./actions";
 import { ProductResult } from "./types";
 import styles from "./page.module.css";
 import Image from "next/image";
+import { CampaignProductList } from "./components/product-cards/campaignProducts";
 
 
 export default function Home() {
@@ -281,7 +282,8 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.chosenProducts}>
-          <ProductList products={state.products ?? []} />
+          <h1>25% rabatt på föjande varor under Påsken.</h1>
+          <CampaignProductList products={state.products ?? []} />
         </div>
       </div>
     </div>
