@@ -22,8 +22,7 @@ export function ShowCampaingCategories() {
         </a>
       </li>
       <li className={styles.home} data-catagory-group={'home'}>
-        <a onClick={(e) => {
-          e.stopPropagation();
+        <a onClick={() => {
           router.push(`/products?filterBy=home-decoration`);
         }}>
           <Image
@@ -37,8 +36,7 @@ export function ShowCampaingCategories() {
         </a>
       </li>
       <li className={styles.home} data-catagory-group={'home'}>
-        <a onClick={(e) => {
-          e.stopPropagation();
+        <a onClick={() => {
           router.push(`/products?filterBy=kitchen-accessories`);
         }}>
           <Image

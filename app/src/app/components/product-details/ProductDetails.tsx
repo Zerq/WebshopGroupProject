@@ -5,19 +5,21 @@ import Image from "next/image";
 import { generateUniqueId } from "@/app/actions";
 import { useCart } from "@/app/cartprovider";
 import { Inter } from 'next/font/google'
+import { useState } from "react";
 
 const inter = Inter({ subsets: ['latin'] });
 
 
 export default function ProductDetails({ product }: { product: Product }) {
     const { addToCart } = useCart();
+    const [selectedImage, setSelectedImage] = useState(product.images[0]); 
     return (
         <div className={inter.className}>
             <div className={styles.allWrapper}>
                 <div className={styles.imageWrapper}>
                     <Image
                         className={styles.image}
-                        src={product.images[0]}
+                        src={selectedImage}
                         width={380}
                         height={380}
                         alt={`Image of ${product.title}`}
@@ -55,18 +57,20 @@ export default function ProductDetails({ product }: { product: Product }) {
                     { product.images.length > 1 &&(
                         <ul className={styles.myUL} role="list">
                             <div className={styles.thumbs}>
-                                {product.images.map(imm =>
+                                {product.images.map((img, index) =>(
                                     <li key={generateUniqueId()}>
                                         <Image
                                             className={styles.thumb}
-                                            src={imm}
+                                            src={img}
                                             width={380}
                                             height={380}
-                                            alt={`Image of ${product.title}`}
+                                            alt={`Thumbnail ${index + 1} of ${product.title}`}
+                                            onClick={() => setSelectedImage(img)} // Uppdaterar den stora bilden
+                                            style={{ cursor: "pointer", border: selectedImage === img ? "2px solid #ddc69c" : "none" }}
                                         />
 
                                     </li>
-                                )}
+                                ))}
                             </div>
                         </ul>
                     )}
