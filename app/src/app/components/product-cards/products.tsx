@@ -4,7 +4,7 @@ import styles from "./cards.module.css";
 import { Product } from "../../types";
 import { useCart } from "@/app/cartprovider";
 import { useRouter } from "next/navigation";
-
+import Star from "../star/star";
 
 export function ProductList({ products }: { products: Product[] }) {
   return (
@@ -45,7 +45,8 @@ export function Card({ product }: { product: Product }) {
             </div>
             <div>
               <p className={styles.paraD}>Kundbetyg:</p>
-              {product.rating} av 5
+          
+              <Star score={product.rating}></Star>
             </div>
             <p className={styles.paraSmall}>{product.description}</p>
           </div>
