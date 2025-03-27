@@ -17,3 +17,7 @@ div.OrderBy {
     margin: 0;
     padding: 0;
 }
+#FilterBySelect {
+    padding-inline: 0.3rem;
+    width: 100%;
+}
