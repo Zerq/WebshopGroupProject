@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   /* En kolumn på små skärmar */
-  gap: 0.5rem;
+  gap: 2.5rem;
   padding: 0.5rem;
   padding-bottom: 0;
   padding-right: 0;
