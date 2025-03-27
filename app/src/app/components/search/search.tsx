@@ -100,7 +100,7 @@ export default function Search() {
                     type="text"
                     value={userInput}
                     onChange={handleSearchInput}
-                    placeholder="Search..."
+                    placeholder="Sök..."
                     className={styles.searchInput}
                     />
                     <button type="submit" className={styles.searchButton}>
@@ -110,7 +110,7 @@ export default function Search() {
                         height="16" 
                         viewBox="0 0 24 24" 
                         fill="none" 
-                        stroke="white" 
+                        stroke="black" 
                         strokeWidth="2" 
                         strokeLinecap="round" 
                         strokeLinejoin="round"
@@ -140,7 +140,7 @@ export default function Search() {
                     className={`${styles.liveSeachItem} ${styles.seeMoreResults}`}
                     onMouseDown={handleSeeMoreResults}
                 >
-                <span>Show more results</span>
+                <span>Visa fler resultat...</span>
               </li>
             </>
           ) : (

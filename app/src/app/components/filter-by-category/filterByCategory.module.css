@@ -1,5 +1,6 @@
 div.OrderBy {
     display: flex;
+    width: 200px;
 }
 
 .buttonWrapper {
@@ -16,4 +17,12 @@ div.OrderBy {
     border: 0;
     margin: 0;
     padding: 0;
+}
+
+.filterBySelect{
+  background-color: rgb(223, 210, 187);
+  border-radius: 5px;
+  width: clamp(70%,2vw,4rem);
+  height: 30px;
+  font-size: medium;
 }

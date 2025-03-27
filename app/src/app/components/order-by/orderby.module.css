@@ -17,3 +17,11 @@ div.OrderBy {
     margin: 0;
     padding: 0;
 }
+
+.orderBySelect{
+    background-color: rgb(223, 210, 187);
+    border-radius: 5px;
+    width: clamp(70%,2vw,4rem);
+    height: 30px;
+    font-size: medium;
+  }
