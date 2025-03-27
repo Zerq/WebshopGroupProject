@@ -31,12 +31,17 @@
   margin: 1rem;
 }
 
+.iconsWrapper {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  margin: 1rem;
+}
+
 .campaignWrapper {
   display: flex;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   margin: 1rem;
-  /* border: 1px solid orange; */
 
   .imageWrapper {
     display:flex;
@@ -74,32 +79,44 @@
   opacity: 1;
   }
 
+  .chosenProducts {
+    width: 80vw;
+
+    .advertText{
+      color: red;
+      text-align: center;
+    }
+  }
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {
     background: var(--button-primary-hover);
     border-color: transparent;
   }
+}
 
-  .chosenProducts {
-    /* border: 1px solid slateblue; */
-    width: 80vw;
-
-    .advertText{
-      color: red;
-      text-align: center;
-      /* border: 1px solid slateblue; */
-    }
+@media screen and (max-width: 400px) {
+  .allWrapper {
+    flex-direction: column;
+    gap: 15px;
   }
 
-  @media screen and (max-width: 400px) {
-    .allWrapper {
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .campaignWrapper {
-      flex-direction: column;
-    }
+  .campaignWrapper {
+    flex-direction: column;
   }
+  .overlay {
+    width: 350px;
+    height: 300px;
+    }
+    .imageWrapper {
+      .image {
+        display: block;
+        width: auto;
+        height: 360px;
+      }
+    }
+    .chosenProducts {
+      width: 90vw;
+    }
 }

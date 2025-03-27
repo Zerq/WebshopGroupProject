@@ -23,8 +23,8 @@ export default function Home() {
 
   return !isDoneLoading ? <div className={styles.loadScreen}></div> : (
     <div className={styles.allWrapper}>
-      <div>
-      <ShowCampaingCategories/>
+      <div className={styles.iconsWrapper}>
+        <ShowCampaingCategories />
       </div>
       <div className={styles.campaignWrapper}>
         <div className={styles.imageWrapper}>
