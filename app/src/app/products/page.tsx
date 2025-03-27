@@ -56,8 +56,17 @@ export default function ProductsPage() {
     }, (200));
 
 
+// i had a SECTION HERE I AM MISSING
+
     query.fetch().then(n => {
       clearTimeout(timeout);
+      // included filtration so just search done on product and not description (couldn't solve it via the API call)
+       if (q) {
+      n.products = n.products.filter(product =>
+        product.title.toLowerCase().includes(q.toLowerCase())
+      )
+      n.total = n.products.length;
+    }
       setState(n)
       setIsDoneLoading(true);
     });
