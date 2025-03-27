@@ -8,7 +8,7 @@ import PaginationNav from "../components/navigation/pagination-nav";
 import { useSearchParams } from "next/navigation";
 import OrderBy from "../components/order-by/orderby";
 import FilterByCategory from "../components/filter-by-category/filterByCategory";
-import SearchBar from "../components/top-navigation/SearchBar";
+import Search from "../components/search/search";
 import style from "./page.module.css";
 
 
@@ -21,6 +21,7 @@ export default function ProductsPage() {
   const orderBy = params.get("orderBy");
   const order = params.get("order");
   const filterBy = params.get("filterBy");
+  const q= params.get("q"); 
 
   useEffect(() => {
     const toInt = (val: unknown) => {
@@ -30,10 +31,12 @@ export default function ProductsPage() {
 
     let query:Products;
     
-    if (filterBy === null){
-      query = Products.GetProducts();
-    } else {
+    if (q) {
+      query = Products.GetProductBySearch(q)
+    } else if (filterBy) {
       query = Products.getProductsByCategory(filterBy);
+    } else {
+      query = Products.GetProducts();
     }
 
     if (orderBy !== null && (order === "asc" || order === "desc")) {
@@ -52,12 +55,22 @@ export default function ProductsPage() {
       setIsDoneLoading(false);
     }, (200));
 
+
+// i had a SECTION HERE I AM MISSING
+
     query.fetch().then(n => {
       clearTimeout(timeout);
+      // included filtration so just search done on product and not description (couldn't solve it via the API call)
+       if (q) {
+      n.products = n.products.filter(product =>
+        product.title.toLowerCase().includes(q.toLowerCase())
+      )
+      n.total = n.products.length;
+    }
       setState(n)
       setIsDoneLoading(true);
     });
-  }, [limit, skip, orderBy, order, filterBy]);
+  }, [limit, skip, orderBy, order, filterBy,q]);
 
 
   const totalLimit = 25;
@@ -69,7 +82,7 @@ export default function ProductsPage() {
         <div className={style.ToolPanel}>
           <FilterByCategory></FilterByCategory>
           <OrderBy></OrderBy>
-          <SearchBar />
+          <Search />
         </div>
         <ProductList products={state.products ?? []} />
         <PaginationNav path={"/products"} pagesCount={pageCount} limit={totalLimit}></PaginationNav>

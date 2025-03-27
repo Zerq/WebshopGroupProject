@@ -25,14 +25,9 @@ export const fetchProduct = async (id: string) => {
     return data as Product;
 }
 
-export const fetchProducts = async (limit = 25, skip = 0) => {
-    const res = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
-    const data = await res.json();
-    return data.products;
-}
 
 export const FetchCategories = async () => {
-    const res = await fetch('https://dummyjson.com/products/category-list');
+    const res:Response = await fetch('https://dummyjson.com/products/category-list');
     const data = await res.json();
     return data as string[];
 };
@@ -41,6 +36,7 @@ export const FetchCategories = async () => {
 /**
  * this is a basic factory pattern
  */
+
 export class Products {
 
     #url!: string;
@@ -61,6 +57,13 @@ export class Products {
     public static getProductsByCategory(category: string) {
         const inst = new Products();
         inst.#url = `https://dummyjson.com/products/category/${category}?`;
+        return inst;
+    }
+
+    //static  method this you can call via Prodcuts.search?q=(searchtext goes here)
+    public static GetProductBySearch(searchText: string) {
+        const inst = new Products();
+        inst.#url = `https://dummyjson.com/products/search?q=${searchText}`;
         return inst;
     }
 
@@ -95,7 +98,12 @@ export class Products {
         return this.#append(`sortBy=${sortCriteria}&order=${order}`);
     }
 
-    public async fetch(): Promise<ProductResult> {
+    public addSearchFilter(q: string) {
+        return this.#append(`search=${encodeURIComponent(q)}`); 
+    }
+ 
+
+    public async fetch(): Promise<ProductResult> { 
         const res = await fetch(this.#url)
         const data = await res.json();
         return data;
