@@ -7,7 +7,7 @@ import styles from './topNavigation.module.css';
 import { useCart } from '@/app/cartprovider';
 
 export default function Menu() {
-    const [open, setOpen] = useState(false); // statevariable
+    const [open, setOpen] = useState(false); 
     const { cartItems } = useCart();
 
     useEffect(() => {

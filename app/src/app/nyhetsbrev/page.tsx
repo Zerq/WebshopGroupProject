@@ -5,6 +5,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { NewLetterData, TransactionResult } from "../types";
 import { useSearchParams } from "next/navigation";
 
+
 function send(email: string, title: string, content: ReactNode): Promise<boolean> {
   return new Promise<boolean>((resolve) => {
 
