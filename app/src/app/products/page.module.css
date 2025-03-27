@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   /* En kolumn på små skärmar */
-  gap: 10rem;
+  gap: 1rem;
   padding: 0.5rem;
   padding-bottom: 0;
   padding-right: 0;
@@ -13,6 +13,7 @@
 @media (min-width: 768px) {
   .ToolPanel {
     grid-template-columns: repeat(3, 1fr);
+    gap: 10rem;
     /* Tre kolumner */
   }
 }
