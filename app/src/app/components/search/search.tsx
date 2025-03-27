@@ -92,6 +92,7 @@ export default function Search() {
   }
 
   return (
+    
     <div className={styles.searchContainer}>
         <div className={styles.inputOuterWrapper }> 
             <div className={styles.inputInnerWrapper}>

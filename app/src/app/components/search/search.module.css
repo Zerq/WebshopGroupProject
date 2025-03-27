@@ -1,5 +1,7 @@
 /* searchbox */
 
+
+
 .searchContainer {
   position: relative;
   width: clamp(100%, 4vw, 90%);
