@@ -7,7 +7,7 @@ import styles from './topNavigation.module.css';
 import { useCart } from '@/app/cartprovider';
 
 export default function Menu() {
-    const [open, setOpen] = useState(false); // statevariable
+    const [open, setOpen] = useState(false); 
     const { cartItems } = useCart();
 
     useEffect(() => {
@@ -31,8 +31,8 @@ export default function Menu() {
                 className={styles.menuIcon}
                 onClick={() => setOpen((prev) => !prev)} />  {open && (
                     <div className={styles.dropdownMenu}>
-                        <Link href="#" onClick={() => setOpen(false)}>Nyhetsbrev </Link>
-                        <Link href="/login" onClick={() => setOpen(false)}>Login</Link>
+                        <Link href="./products" onClick={() => setOpen(false)}>Produkter </Link>
+                        <Link href="./nyhetsbrev" onClick={() => setOpen(false)}>Nyhetsbrev </Link>
                         <Link href="./cart" onClick={() => setOpen(false)}>Varukorg 🛒
                             <span className={styles.cartCount}>
                                 {cartItems.reduce((total, item) => total + item.quantity, 0)}
