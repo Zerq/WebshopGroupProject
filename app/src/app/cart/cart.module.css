@@ -121,6 +121,7 @@ h1.cartHead {
 .totalPriceWrapper {
     text-align: right;
     margin-top: .4rem;
+    margin-bottom: 24rem;
     padding-right: clamp(1rem, 4vw, 1rem);
 
     h2 {
