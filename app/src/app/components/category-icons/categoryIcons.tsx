@@ -49,7 +49,10 @@ export function ShowCampaingCategories() {
           <p className={styles.kitchen_accessories}>Köksassocearer</p>
         </a>
       </li>
-      <li className={styles.home} data-categories={'groceries'} data-catagory-group={'home'}>
+      <li className={styles.home} data-catagory-group={'home'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=groceries`);
+        }}>
         <Image
           className={styles.product}
           src={'/food.png'}
@@ -57,9 +60,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på mat`}
         />
-        <p className={styles.category}>Specerier</p>
+          <p className={styles.category}>Specerier</p>
+        </a>
       </li>
-      <li className='tablets' data-categories={'laptops'} data-catagory-group={'computing'}>
+      <li className='tablets' data-catagory-group={'computing'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=laptops`);
+      }}>
         <Image
           className={styles.product}
           src={'/laptop.png'}
@@ -68,8 +75,12 @@ export function ShowCampaingCategories() {
           alt={`Bild på bärbardator`}
         />
         <p className={styles.laptops}>Bärbara datorer</p>
+      </a>
       </li>
-      <li className={styles.computing} data-categories={'tablets'} data-catagory-group={'computing'}>
+      <li className={styles.computing} data-catagory-group={'computing'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=tablets`);
+        }}>
         <Image
           className={styles.product}
           src={'/tablet.png'}
@@ -77,9 +88,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på en surfplatta`}
         />
-        <p className={styles.category}>Surfplattor</p>
+          <p className={styles.category}>Surfplattor</p>
+        </a>
       </li>
-      <li className={styles.computing} data-categories={'cell-phone'} data-catagory-group={'computing'}>
+      <li className={styles.computing} data-catagory-group={'computing'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=cell-phone`);
+        }}>
         <Image
           className={styles.product}
           src={'/cell-phone.png'}
@@ -87,9 +102,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på mobil`}
         />
-        <p className={styles.category}>Mobiler</p>
+          <p className={styles.category}>Mobiler</p>
+        </a>
       </li>
-      <li className={styles.computing} data-categories={'mobile-accessories'} data-catagory-group={'computing'}>
+      <li className={styles.computing} data-catagory-group={'computing'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=mobile-accessories`);
+        }}>
         <Image
           className={styles.product}
           src={'/music.png'}
@@ -97,9 +116,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på mobilaccessoarer`}
         />
-        <p className={styles.category}>Mobilaccessoarer</p>
+          <p className={styles.category}>Mobilaccessoarer</p>
+        </a>
       </li>
-      <li className={styles.beauty} data-categories={'beauty'} data-catagory-group={'beauty'}>
+      <li className={styles.beauty} data-catagory-group={'beauty'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=beauty`);
+        }}>
         <Image
           className={styles.product}
           src={'/mascara.png'}
@@ -107,9 +130,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på skönhetsprodukter`}
         />
-        <p className={styles.beauty}>Skönhetsprodukter</p>
+          <p className={styles.beauty}>Skönhetsprodukter</p>
+        </a>
       </li>
-      <li className={styles.beauty} data-categories={'fragrances'} data-catagory-group={'beauty'}>
+      <li className={styles.beauty} data-catagory-group={'beauty'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=fragrances`);
+        }}>
         <Image
           className={styles.product}
           src={'/fragrance.png'}
@@ -117,9 +144,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på parfym`}
         />
-        <p className={styles.category}>Parfym</p>
+          <p className={styles.category}>Parfym</p>
+        </a>
       </li>
-      <li className={styles.beauty} data-categories={'skin-care'} data-catagory-group={'beauty'}>
+      <li className={styles.beauty} data-catagory-group={'beauty'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=skin-care`);
+        }}>
         <Image
           className={styles.product}
           src={'/skincare.png'}
@@ -127,9 +158,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Hudvård`}
         />
-        <p className={styles.category}>Hudvård</p>
+          <p className={styles.category}>Hudvård</p>
+        </a>
       </li>
-      <li className={styles.woman} data-categories={'tops'} data-catagory-group={'woman'}>
+      <li className={styles.woman} data-catagory-group={'woman'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=tops`);
+        }}>
         <Image
           className={styles.product}
           src={'/dress.png'}
@@ -137,9 +172,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på topp`}
         />
-        <p className={styles.category}>Toppar</p>
+          <p className={styles.category}>Toppar</p>
+        </a>
       </li>
-      <li className={styles.woman} data-categories={'womens-dresses'} data-catagory-group={'woman'}>
+      <li className={styles.woman} data-catagory-group={'woman'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=womens-dresses`);
+        }}>
         <Image
           className={styles.product}
           src={'/long-sleeves-dress.png'}
@@ -147,9 +186,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på klänningar`}
         />
-        <p className={styles.category}>Klänningar</p>
+          <p className={styles.category}>Klänningar</p>
+        </a>
       </li>
-      <li className={styles.woman} data-categories={'womens-shoes'} data-catagory-group={'woman'}>
+      <li className={styles.woman} data-catagory-group={'woman'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=womens-shoes`);
+        }}>
         <Image
           className={styles.product}
           src={'/high-heel.png'}
@@ -157,9 +200,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på damskor`}
         />
-        <p className={styles.category}>Damskor</p>
+          <p className={styles.category}>Damskor</p>
+        </a>
       </li>
-      <li className={styles.woman} data-categories={'womens-bags'} data-catagory-group={'woman'}>
+      <li className={styles.woman} data-catagory-group={'woman'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=womens-bags`);
+        }}>
         <Image
           className={styles.product}
           src={'/woman-bag.png'}
@@ -167,9 +214,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på damväskor`}
         />
-        <p className={styles.category}>Damväskor</p>
+          <p className={styles.category}>Damväskor</p>
+        </a>
       </li>
-      <li className={styles.woman} data-categories={'womens-jewellery'} data-catagory-group={'woman'}>
+      <li className={styles.woman} data-catagory-group={'woman'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=womens-jewellery`);
+        }}>
         <Image
           className={styles.product}
           src={'/pearl-necklace.png'}
@@ -177,9 +228,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på damsmycken`}
         />
-        <p className={styles.category}>Damsmycken</p>
+          <p className={styles.category}>Damsmycken</p>
+        </a>
       </li>
-      <li className={styles.woman} data-categories={'womens-watches'} data-catagory-group={'woman'}>
+      <li className={styles.woman} data-catagory-group={'woman'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=womens-watches`);
+        }}>
         <Image
           className={styles.product}
           src={'/woman.png'}
@@ -187,9 +242,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på damklockor`}
         />
-        <p className={styles.category}>Damklockor</p>
+          <p className={styles.category}>Damklockor</p>
+        </a>
       </li>
-      <li className={styles.men} data-categories={'mens-shoes'} data-catagory-group={'men'}>
+      <li className={styles.men} data-catagory-group={'men'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=mens-shoes`);
+        }}>
         <Image
           className={styles.product}
           src={'/mens-shoes.png'}
@@ -197,9 +256,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på herrskor`}
         />
-        <p className={styles.category}>Herrskor</p>
+          <p className={styles.category}>Herrskor</p>
+        </a>
       </li>
-      <li className={styles.men} data-categories={'mens-shirts'} data-catagory-group={'men'}>
+      <li className={styles.men} data-catagory-group={'men'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=mens-shirts`);
+        }}>
         <Image
           className={styles.product}
           src={'/mens-shirt.png'}
@@ -207,9 +270,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på herrskortor`}
         />
-        <p className={styles.category}>Herrskor</p>
+          <p className={styles.category}>Herrskor</p>
+        </a>
       </li>
-      <li>
+      <li className={styles.men} data-catagory-group={'men'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=mens-watches`);
+        }}>
         <Image
           className={styles.product}
           src={'/watch.png'}
@@ -217,9 +284,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på herrklocka`}
         />
-        <p className={styles.category}>Herrklockor</p>
+          <p className={styles.category}>Herrklockor</p>
+        </a>
       </li>
-      <li className='vehicle' data-categories={'motorcycle'} data-catagory-group={'vehicle'}>
+      <li className='vehicle' data-catagory-group={'vehicle'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=motorcycle`);
+        }}>
         <Image
           className={styles.product}
           src={'/motorcycle.png'}
@@ -227,9 +298,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Motorcycle`}
         />
-        <p className={styles.category}>Motorcyklar</p>
+          <p className={styles.category}>Motorcyklar</p>
+        </a>
       </li>
       <li className='vehicle' data-categories={'vehicle'} data-catagory-group={'vehicle'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=vehicle`);
+        }}>
         <Image
           className={styles.product}
           src={'/car.png'}
@@ -237,9 +312,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på en bil.`}
         />
-        <p className={styles.category}>Bilar</p>
+          <p className={styles.category}>Bilar</p>
+        </a>
       </li>
       <li className='sports' data-categories={'sports-accessories'} data-catagory-group={'sports'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=sports-accessories`);
+        }}>
         <Image
           className={styles.product}
           src={'/hand-grip.png'}
@@ -248,9 +327,13 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Sportartiklar`}
         />
-        <p className={styles.category}>Sportartiklar</p>
+          <p className={styles.category}>Sportartiklar</p>
+        </a>
       </li>
-      <li className={styles.men} data-categories={'sunglasses'} data-catagory-group={'men,woman'}>
+      <li className={styles.men} data-catagory-group={'men,woman'}>
+        <a onClick={() => {
+          router.push(`/products?filterBy=sunglasses`);
+        }}>
         <Image
           className={styles.product}
           src={'/sun-glasses.png'}
@@ -258,7 +341,8 @@ export function ShowCampaingCategories() {
           height={380}
           alt={`Bild på solglasögon`}
         />
-        <p className={styles.category}>Solglasögon</p>
+          <p className={styles.category}>Solglasögon</p>
+          </a>
       </li>
     </ul>
   )

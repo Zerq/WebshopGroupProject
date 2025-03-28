@@ -25,7 +25,9 @@ export default function Home() {
       <div className={styles.iconsWrapper}>
         <ShowCampaingCategories />
       </div>
-      <h1 className={styles.advertText}>25% rabatt på föjande varor under Påsken!</h1>
+      <div className={styles.discountWrapper}>
+        <h1 className={styles.advertText}>25% rabatt på föjande varor under Påsken!</h1>
+      </div>
       <div className={styles.campaignWrapper}>
         <div className={styles.imageWrapper}>
           <Image
