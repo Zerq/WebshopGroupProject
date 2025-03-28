@@ -1,76 +1,51 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ProductList } from "./components/product-cards/products";
-import { Products } from "./actions";
+import { getCampaignIds } from "./actions";
 import { ProductResult } from "./types";
-import PaginationNav from "./components/navigation/pagination-nav";
-import { useSearchParams } from "next/navigation";
-import OrderBy from "./components/order-by/orderby";
-import FilterByCategory from "./components/filter-by-category/filterByCategory";
-import SearchBar from "./components/top-navigation/SearchBar";
-import style from "./page.module.css";
+import styles from "./page.module.css";
+import Image from "next/image";
+import { CampaignProductList } from "./components/product-cards/campaignProducts";
+import { ShowCampaingCategories } from "./components/category-icons/categoryIcons";
+
 export default function Home() {
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
   const [isDoneLoading, setIsDoneLoading] = useState(false);
-  const params = useSearchParams();
-  const limit = params.get("limit");
-  const skip = params.get("skip");
-  const orderBy = params.get("orderBy");
-  const order = params.get("order");
-  const filterBy = params.get("filterBy");
-
+  // const [activeTab, setActiveTab] = useState("home");
   useEffect(() => {
-    const toInt = (val: unknown) => {
-      if (typeof (val) !== "string") return null;
-      return Number.parseInt(val);
-    };
-
-    let query:Products;
-    
-    if (filterBy === null){
-      query = Products.GetProducts();
-    } else {
-      query = Products.getProductsByCategory(filterBy);
-    }
-
-    if (orderBy !== null && (order === "asc" || order === "desc")) {
-      query = query.sortBy(orderBy, order); setIsDoneLoading(true);
-    }
-
-    if (toInt(limit) !== null) {
-      query = query.limit(toInt(limit)!);
-    }
-
-    if (toInt(skip) !== null) {
-      query = query.skip(toInt(skip)!);
-    }
-
-    const timeout = setTimeout(() => { // only render loading screen if request tameks more then 200 miliseconds
-      setIsDoneLoading(false);
-    }, (200));
-
-    query.fetch().then(n => {
-      clearTimeout(timeout);
-      setState(n)
+    const productIds: Array<string> = ["1", "2", "3", "8"];
+    getCampaignIds(productIds).then(n => {
+      setState(n);
       setIsDoneLoading(true);
     });
-  }, [limit, skip, orderBy, order, filterBy]);
+  }, []);
 
 
-  const totalLimit = 25;
-  const pageCount = Math.ceil(state.total / totalLimit);
-
-  return !isDoneLoading ? <div className={style.loadScreen}></div> :
-    <div>
-     <main>
-        <div className={style.ToolPanel}>
-          <FilterByCategory></FilterByCategory>
-          <OrderBy></OrderBy>
-          <SearchBar />
+  return !isDoneLoading ? <div className={styles.loadScreen}></div> : (
+    <div className={styles.allWrapper}>
+      <div className={styles.iconsWrapper}>
+        <ShowCampaingCategories />
+      </div>
+      <div className={styles.discountWrapper}>
+        <h1 className={styles.advertText}>25% rabatt på föjande varor under Påsken!</h1>
+      </div>
+      <div className={styles.campaignWrapper}>
+        <div className={styles.imageWrapper}>
+          <Image
+            className={styles.image}
+            src="/pask-02.png"
+            width={350}
+            height={350}
+            alt={`Image of Eastern eggs in a basket`}
+          />
+          <div className={styles.overlay}>
+            <h1>Oslagbara priser<br />under hela <br />Påsk kampanjen</h1>
+          </div>
         </div>
-        <ProductList products={state.products ?? []} />
-        <PaginationNav path={"/products"} pagesCount={pageCount} limit={totalLimit}></PaginationNav>
-      </main>
-    </div>;
+        <div className={styles.chosenProducts}>
+          <CampaignProductList products={state.products ?? []} />
+        </div>
+      </div>
+    </div>
+  );
 }
