@@ -18,6 +18,12 @@
     margin-left: 1px;
 }
 
+.navLinksWrapper > *{
+    font-size: medium;
+    vertical-align: middle;
+    padding-top: 1rem;
+}
+
 
 /*---------------------------------------
 2. MOBILE DEFUALT <760px

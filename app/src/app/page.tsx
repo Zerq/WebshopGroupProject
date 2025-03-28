@@ -11,6 +11,7 @@ import { ShowCampaingCategories } from "./components/category-icons/categoryIcon
 export default function Home() {
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
   const [isDoneLoading, setIsDoneLoading] = useState(false);
+  // const [activeTab, setActiveTab] = useState("home");
   useEffect(() => {
     const productIds: Array<string> = ["1", "2", "3", "8"];
     getCampaignIds(productIds).then(n => {
@@ -24,6 +25,9 @@ export default function Home() {
     <div className={styles.allWrapper}>
       <div className={styles.iconsWrapper}>
         <ShowCampaingCategories />
+      </div>
+      <div className={styles.discountWrapper}>
+        <h1 className={styles.advertText}>25% rabatt på föjande varor under Påsken!</h1>
       </div>
       <div className={styles.campaignWrapper}>
         <div className={styles.imageWrapper}>
@@ -39,7 +43,6 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.chosenProducts}>
-          <h1 className={styles.advertText}>25% rabatt på föjande varor under Påsken!</h1>
           <CampaignProductList products={state.products ?? []} />
         </div>
       </div>

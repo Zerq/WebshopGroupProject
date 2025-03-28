@@ -8,6 +8,7 @@ div.OrderBy {
     flex-direction: column;
     padding-inline: 0.3rem;
 }
+
 .labelSelector {
     align-content: center;
     padding-inline: 0.3rem;
@@ -19,11 +20,18 @@ div.OrderBy {
     padding: 0;
 }
 
-.filterBySelect{
-  background-color: rgb(223, 210, 187);
-  border-radius: 5px;
-  width: clamp(100%, 10vw, 100%);
-  height: 30px;
-  margin-right: 0.4rem;
-  font-size: medium;
+.filterBySelect {
+    background-color: rgb(223, 210, 187);
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    margin-right: 0.4rem;
+    font-size: medium;
+    text-align: center;
+    padding: 0 0.5rem;
+    border: 1px solid #ccc;
+}
+
+.categoryOption {
+    text-align: left;
 }

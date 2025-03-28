@@ -56,18 +56,14 @@
     width: auto;
     height: 110px;
     margin: 0px;
-    /* border: 1px solid orange; */
   }
 }
 
 .thumbs {
   display: flex;
   list-style-type: none;
-  /* Remove bullets */
   padding: 0;
-  /* Remove padding */
   margin: 0;
-  /* Remove margins */
 }
 
 .price {
