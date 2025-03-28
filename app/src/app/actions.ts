@@ -1,7 +1,14 @@
-import { ProductResult } from "./types";
+import { Product, ProductResult } from "./types";
 
+export async function getCampaignIds(ids: string[]): Promise<ProductResult> {
+    const products = await Promise.all(await ids.map(async n => {
+        return await fetchProduct(n);
+    }));
 
-export function generateUniqueId(){
+    return { products: products, total: products.length };
+}
+
+export function generateUniqueId() {
     const randomInt = getRandomInt(1, 1000);
     return randomInt;
 }
@@ -10,12 +17,12 @@ function getRandomInt(min: number, max: number): number {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+}
 
 export const fetchProduct = async (id: string) => {
     const res = await fetch(`https://dummyjson.com/products/${id}`);
     const data = await res.json();
-    return data;
+    return data as Product;
 }
 
 
@@ -103,5 +110,3 @@ export class Products {
     }
 
 }
-
-// example  const product = await Products.GetProducts().limit(30).skip(60).select("title","price").fetch();

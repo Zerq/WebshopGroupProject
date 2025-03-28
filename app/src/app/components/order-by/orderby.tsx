@@ -3,7 +3,6 @@ import { SyntheticEvent } from "react";
 
 import styles from "./orderby.module.css";
 import OrderFlipper, { Direction } from "../order-flipper/OrderFlipper";
-import { ParkingMeter } from "lucide-react";
 
 export default function OrderBy() {
 
