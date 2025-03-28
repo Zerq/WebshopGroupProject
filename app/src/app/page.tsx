@@ -11,6 +11,7 @@ import { ShowCampaingCategories } from "./components/category-icons/categoryIcon
 export default function Home() {
   const [state, setState] = useState({ products: [], total: 0 } as ProductResult);
   const [isDoneLoading, setIsDoneLoading] = useState(false);
+  // const [activeTab, setActiveTab] = useState("home");
   useEffect(() => {
     const productIds: Array<string> = ["1", "2", "3", "8"];
     getCampaignIds(productIds).then(n => {
