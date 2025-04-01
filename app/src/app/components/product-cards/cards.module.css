@@ -18,46 +18,49 @@
     min-width: 280px; */
 
     .imageWrapper {
-      display:flex;
+      display: flex;
       justify-content: center;
+
       .image {
         width: auto;
         height: 160px;
-        margin: 10px 0 210px 0;
+        margin: 10px 0 160px 0;
       }
     }
 
     .lowerHalf {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.1rem;
       height: auto;
       position: absolute;
-      bottom: 5px;
+      bottom: 3px;
       width: 94%;
       padding: 6px;
-      
+
       .price {
         color: rgb(165, 19, 19);
         font-size: medium;
         font-weight: bolder;
         margin-bottom: 25px;
       }
+
       .btnWrapper {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
-          
+
         .btnBuy {
           border: 1px solid rgb(31, 22, 10);
           border-radius: 6px;
-          width: 98%; 
+          width: 98%;
           height: 2rem;
           padding: 0.26rem;
           color: var(--fontColBtnBuy);
           background-color: var(--bgColBtnBuy);
-          outline-offset: 0.3rem; /* accessibility issue */
+          outline-offset: 0.3rem;
+          /* accessibility issue */
         }
 
         .btnBuy:hover {
@@ -66,25 +69,13 @@
           color: var(--bgColBtnBuy);
         }
       }
-
-      .paraD {
-        display: inline-flex;
-        font-weight: bold;
-        margin-bottom: 1rem;
-        margin-right: 0.5rem;
-      }
-
-      .paraSmall {
-        font-size: small;
-        margin-bottom: 1rem;
-      }
     }
   }
 
   .card {
     transition: all 300ms;
   }
-   
+
   .card:hover {
     border-radius: 5px;
     transform: scale(1.03);
@@ -95,6 +86,6 @@
 @media screen and (max-width: 400px) {
   .cards {
     justify-items: center;
-    margin:1.5rem .5rem 0 .5rem;
+    margin: 1.5rem .5rem 0 .5rem;
   }
 }
